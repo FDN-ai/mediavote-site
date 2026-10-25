@@ -39,11 +39,23 @@ WATCH.forEach((dir) => {
   });
 });
 
-const serve = spawn('node', ['serve.js'], { cwd: ROOT, stdio: 'inherit', env: { ...process.env, PORT } });
-const decap = spawn('npx', ['--yes', 'decap-server'], { cwd: ROOT, stdio: 'inherit', env: { ...process.env, PORT: '8081' } });
+/* Un serveur sert peut-être déjà dist/ sur ce port (aperçu de l'éditeur) :
+   on le réutilise au lieu de planter. */
+const net = require('net');
+const busy = (port) => new Promise((ok) => {
+  const s = net.connect(port, '127.0.0.1');
+  s.once('connect', () => { s.destroy(); ok(true); });
+  s.once('error', () => ok(false));
+});
+const children = [];
+(async () => {
+  if (await busy(+PORT)) console.log(`  Un serveur répond déjà sur le port ${PORT} : il est réutilisé.`);
+  else children.push(spawn('node', ['serve.js'], { cwd: ROOT, stdio: 'inherit', env: { ...process.env, PORT } }));
+  if (await busy(8081)) console.log('  Le serveur Decap répond déjà sur le port 8081 : il est réutilisé.');
+  else children.push(spawn('npx', ['--yes', 'decap-server'], { cwd: ROOT, stdio: 'inherit', env: { ...process.env, PORT: '8081' } }));
+  console.log(`\n\x1b[1m  Rédaction : http://localhost:${PORT}/admin/   ·   Site : http://localhost:${PORT}/\x1b[0m\n`);
+})();
 
-console.log(`\n\x1b[1m  Rédaction : http://localhost:${PORT}/admin/   ·   Site : http://localhost:${PORT}/\x1b[0m\n`);
-
-const stop = () => { serve.kill(); decap.kill(); process.exit(0); };
+const stop = () => { children.forEach((c) => c.kill()); process.exit(0); };
 process.on('SIGINT', stop);
 process.on('SIGTERM', stop);
