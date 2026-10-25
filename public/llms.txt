@@ -1,0 +1,25 @@
+# Mediavote
+
+> Mediavote est une société française spécialisée depuis 1998 dans le vote électronique professionnel : assemblées générales, conseils d'administration, élections CSE, consultations et référendums. Elle édite et exploite la plateforme de vote en ligne ProVote® et opère des boîtiers de vote HF en salle. Chaque scrutin accompagné est préparé, paramétré selon les statuts de l'organisation, testé en conditions réelles et piloté par un chef de projet.
+
+Site : https://www.media-vote.com · Téléphone : 01 85 09 27 45 · E-mail : contact@media-vote.com
+
+## Solutions par type de scrutin
+- [Assemblées générales](https://www.media-vote.com/solutions/vote-electronique-assemblee-generale/) : émargement électronique, quorum en temps réel, pouvoirs et mandats, résolutions, procès-verbaux
+- [Conseils d'administration](https://www.media-vote.com/solutions/vote-conseil-administration/) : délibérations en séance ou en consultation écrite, vote secret, pondération
+- [Élections CSE](https://www.media-vote.com/solutions/elections-cse/) : protocole préélectoral, collèges, dépouillement par clés chiffrées, CERFA, second tour — sur ProVote® uniquement
+- [Consultations et référendums](https://www.media-vote.com/solutions/consultations-referendums/)
+
+## Deux solutions de vote
+- [ProVote®, vote en ligne](https://www.media-vote.com/provote/) : sur ordinateur, tablette ou smartphone, sans installation ; en séance, à distance ou en hybride. Certification NF Logiciel — Protection des données personnelles (NF 552) obtenue en 2022 auprès d'AFNOR Certification
+- [Boîtiers de vote HF](https://www.media-vote.com/modes-de-vote/vote-par-boitier/) : vote en salle par radio, sans dépendance à Internet, résultats affichés dès la clôture de chaque vote
+- [Comparatif ProVote® / boîtiers](https://www.media-vote.com/modes-de-vote/)
+
+## Offres
+- [Licence annuelle ProVote®](https://www.media-vote.com/offres/licence-annuelle-provote/) : autonomie sur la plateforme, formation et assistance incluses
+- [Achat de boîtiers de vote](https://www.media-vote.com/offres/achat-boitiers-de-vote/) : boîtiers, récepteurs, logiciel, formation-action de 3 h 30 et accompagnement de la première session
+- [Accompagnement sur mesure](https://www.media-vote.com/offres/accompagnement-sur-mesure/) : chef de projet dédié de la préparation aux résultats
+- [Demander une démonstration](https://www.media-vote.com/demonstration/)
+
+## À propos
+- [Qui sommes-nous](https://www.media-vote.com/a-propos/) · [Références](https://www.media-vote.com/references/) · [Sécurité et conformité](https://www.media-vote.com/securite-conformite/) · [FAQ](https://www.media-vote.com/faq/)

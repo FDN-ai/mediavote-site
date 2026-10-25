@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administration — Actualités Mediavote</title>
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png">
+</head>
+<body>
+  <!-- Decap CMS (open source, licence MIT). Chargé uniquement sur cette page
+       d'administration, jamais sur le site public. -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Aperçu en direct avec les vraies feuilles de style du site
+    CMS.registerPreviewStyle('/assets/css/main.css');
+    CMS.registerPreviewStyle('/admin/preview.css');
+
+    // Gabarit d'aperçu : ce que verra le lecteur sur la page article
+    var h = window.h || CMS.h || (window.React && window.React.createElement);
+    var Preview = createClass({
+      render: function () {
+        var e = this.props.entry;
+        var img = e.getIn(['data', 'image']);
+        var imgSrc = img ? this.props.getAsset(img).toString() : null;
+        var date = e.getIn(['data', 'date']);
+        var m = date ? String(date).match(/^(\d{4})-(\d{2})-(\d{2})/) : null;
+        var dateFr = m ? new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+        return h('div', { className: 'preview' },
+          h('p', { className: 'eyebrow' }, e.getIn(['data', 'category']) || ''),
+          h('h1', {}, e.getIn(['data', 'title']) || 'Titre de l’article'),
+          h('p', { className: 'lead' }, e.getIn(['data', 'description']) || ''),
+          h('p', { className: 'article__meta' }, dateFr ? 'Publié le ' + dateFr : ''),
+          imgSrc ? h('figure', { className: 'article__cover' }, h('img', { src: imgSrc, alt: e.getIn(['data', 'image_alt']) || '' })) : null,
+          h('div', { className: 'article' }, this.props.widgetFor('body'))
+        );
+      }
+    });
+    CMS.registerPreviewTemplate('actualites', Preview);
+  </script>
+</body>
+</html>

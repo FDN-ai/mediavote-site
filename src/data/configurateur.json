@@ -1,0 +1,421 @@
+{
+  "_lisezmoi": [
+    "Règles du configurateur « Trouvez la solution de vote adaptée à votre besoin ».",
+    "Ce fichier est la seule source des questions, des réponses et des recommandations.",
+    "Il est lu au moment du build : modifier ce fichier puis relancer `node build.js` suffit.",
+    "Il est prévu pour devenir éditable depuis l'interface /admin du CMS, sans toucher au code.",
+    "",
+    "Fonctionnement des règles : elles sont évaluées dans l'ordre, la PREMIÈRE qui correspond s'applique.",
+    "Chaque condition `si` peut porter sur vote, mode, organisation ou votants ; une liste vaut « l'un de ».",
+    "Une règle sans condition sert de règle par défaut : elle doit rester en dernier.",
+    "",
+    "Sources : retour_quizz (spécification), quiz_entree_tunnel_lead.png (maquette),",
+    "MediaVote_Arbo.png (tableau « Quelle solution pour quel vote ? ») et To Do (ProVote® pour le",
+    "distanciel, boîtier pour le présentiel ; pas de boîtier pour les élections CSE)."
+  ],
+  "questions": [
+    {
+      "id": "vote",
+      "numero": 1,
+      "question": "Quel vote souhaitez-vous organiser ?",
+      "invite": "Sélectionnez un type de vote",
+      "icone": "urne",
+      "options": [
+        {
+          "id": "ag",
+          "label": "Assemblée générale (AG)",
+          "court": "Assemblée générale (AG)",
+          "icone": "assemblee",
+          "phrase": "une assemblée générale",
+          "cible": "mon AG",
+          "page": "/solutions/vote-electronique-assemblee-generale/",
+          "pageLabel": "Le vote électronique en assemblée générale"
+        },
+        {
+          "id": "ca",
+          "label": "Conseil d’administration (CA)",
+          "court": "Conseil d’administration",
+          "icone": "conseil",
+          "phrase": "un conseil d’administration",
+          "cible": "mon conseil",
+          "page": "/solutions/vote-conseil-administration/",
+          "pageLabel": "Le vote en conseil d’administration"
+        },
+        {
+          "id": "cse",
+          "label": "Élection CSE",
+          "court": "Élection CSE",
+          "icone": "cse",
+          "phrase": "une élection CSE",
+          "cible": "mon élection CSE",
+          "page": "/solutions/elections-cse/",
+          "pageLabel": "Les élections CSE en ligne"
+        },
+        {
+          "id": "referendum",
+          "label": "Référendum / consultation",
+          "court": "Référendum ou consultation",
+          "icone": "consultation",
+          "phrase": "un référendum ou une consultation",
+          "cible": "ma consultation",
+          "page": "/solutions/consultations-referendums/",
+          "pageLabel": "Consultations et référendums"
+        },
+        {
+          "id": "election",
+          "label": "Autre élection",
+          "court": "Autre élection",
+          "icone": "election",
+          "phrase": "une élection",
+          "cible": "mon élection",
+          "page": "/solutions/",
+          "pageLabel": "Toutes nos solutions de vote"
+        },
+        {
+          "id": "autre",
+          "label": "Autre type de vote",
+          "court": "Autre type de vote",
+          "icone": "autre",
+          "phrase": "un vote",
+          "cible": "mon vote",
+          "page": "/solutions/",
+          "pageLabel": "Toutes nos solutions de vote"
+        }
+      ]
+    },
+    {
+      "id": "mode",
+      "numero": 2,
+      "question": "Comment souhaitez-vous voter ?",
+      "invite": "Sélectionnez le mode de vote",
+      "icone": "calendrier",
+      "options": [
+        {
+          "id": "presentiel",
+          "label": "En présentiel",
+          "aide": "Tous les votants sont sur site",
+          "court": "En présentiel",
+          "icone": "salle",
+          "phrase": "en présentiel"
+        },
+        {
+          "id": "hybride",
+          "label": "En hybride",
+          "aide": "Votants sur site et à distance",
+          "court": "En hybride",
+          "icone": "hybride",
+          "phrase": "en mode hybride"
+        },
+        {
+          "id": "distance",
+          "label": "À distance",
+          "aide": "Tous les votants à distance",
+          "court": "À distance",
+          "icone": "enLigne",
+          "phrase": "à distance"
+        },
+        {
+          "id": "nsp",
+          "label": "Je ne sais pas encore",
+          "aide": "Aidez-moi à choisir",
+          "court": "Mode à définir",
+          "icone": "question",
+          "phrase": ""
+        }
+      ]
+    },
+    {
+      "id": "organisation",
+      "numero": 3,
+      "question": "Vous représentez ?",
+      "invite": "Sélectionnez votre organisation",
+      "icone": "entreprises",
+      "options": [
+        {
+          "id": "entreprise",
+          "label": "Une entreprise / société",
+          "court": "Entreprise / société",
+          "secteur": "/secteurs/entreprises-mutuelles/",
+          "secteurLabel": "Entreprises et mutuelles"
+        },
+        {
+          "id": "association",
+          "label": "Une association",
+          "court": "Association",
+          "secteur": "/secteurs/associations-federations/",
+          "secteurLabel": "Associations et fédérations"
+        },
+        {
+          "id": "federation",
+          "label": "Une fédération",
+          "court": "Fédération",
+          "secteur": "/secteurs/associations-federations/",
+          "secteurLabel": "Associations et fédérations"
+        },
+        {
+          "id": "administration",
+          "label": "Une administration / organisme public",
+          "court": "Administration / organisme public",
+          "secteur": "/secteurs/organismes-publics/",
+          "secteurLabel": "Organismes publics"
+        },
+        {
+          "id": "cooperative",
+          "label": "Une coopérative",
+          "court": "Coopérative",
+          "secteur": "/secteurs/entreprises-mutuelles/",
+          "secteurLabel": "Entreprises et mutuelles"
+        },
+        {
+          "id": "syndicat",
+          "label": "Un syndicat / organisation professionnelle",
+          "court": "Syndicat / organisation professionnelle",
+          "secteur": "/secteurs/associations-federations/",
+          "secteurLabel": "Associations et fédérations"
+        },
+        {
+          "id": "ordre",
+          "label": "Un ordre professionnel",
+          "court": "Ordre professionnel",
+          "secteur": "/secteurs/associations-federations/",
+          "secteurLabel": "Associations et fédérations"
+        },
+        {
+          "id": "autre",
+          "label": "Autre organisation",
+          "court": "Autre organisation",
+          "secteur": "/secteurs/",
+          "secteurLabel": "Tous les secteurs"
+        }
+      ]
+    },
+    {
+      "id": "votants",
+      "numero": 4,
+      "question": "Combien de personnes peuvent voter ?",
+      "invite": "Sélectionnez le nombre de votants",
+      "icone": "assemblee",
+      "options": [
+        {
+          "id": "moins-50",
+          "label": "Moins de 50",
+          "court": "Moins de 50 votants"
+        },
+        {
+          "id": "50-149",
+          "label": "De 50 à 149",
+          "court": "50 à 149 votants"
+        },
+        {
+          "id": "150-299",
+          "label": "De 150 à 299",
+          "court": "150 à 299 votants"
+        },
+        {
+          "id": "300-499",
+          "label": "De 300 à 499",
+          "court": "300 à 499 votants"
+        },
+        {
+          "id": "500-999",
+          "label": "De 500 à 999",
+          "court": "500 à 999 votants"
+        },
+        {
+          "id": "1000-plus",
+          "label": "1 000 et plus",
+          "court": "1 000 votants et plus"
+        }
+      ]
+    }
+  ],
+  "solutions": {
+    "provote": {
+      "nom": "ProVote®",
+      "accroche": "La plateforme de vote en ligne sécurisée",
+      "description": "Vos votants participent depuis un ordinateur, une tablette ou un smartphone, sans rien installer. En séance, à distance ou en hybride.",
+      "points": [
+        "Simple à utiliser, sans installation",
+        "Sécurisé et conforme au RGPD",
+        "Accompagnement par nos experts",
+        "Résultats traçables et vérifiables"
+      ],
+      "url": "/provote/",
+      "cta": "Découvrir ProVote®",
+      "visuel": "provote-mobile",
+      "visuelAlt": "Écran de vote ProVote® sur smartphone : résolution « Modification des statuts » avec les choix Pour, Contre et Abstention"
+    },
+    "boitier": {
+      "nom": "Boîtiers de vote HF",
+      "accroche": "Le vote en salle, sans dépendance à Internet",
+      "description": "Chaque participant reçoit un boîtier individuel. Les boîtiers communiquent par radio : les résultats s’affichent à l’écran dès la clôture de chaque vote.",
+      "points": [
+        "Idéal pour les votes en présentiel",
+        "Simple et rapide à déployer",
+        "Fiable et robuste",
+        "Vote anonyme ou nominatif"
+      ],
+      "url": "/modes-de-vote/vote-par-boitier/",
+      "cta": "Découvrir les boîtiers HF",
+      "visuel": "boitier-main",
+      "visuelAlt": "Boîtier de vote Mediavote tenu en main, avec écran et touches 1, 2 et 3"
+    }
+  },
+  "fonctionnalites": {
+    "ag": {
+      "titre": "Les fonctionnalités adaptées à votre AG",
+      "liste": [
+        "Émargement digital",
+        "Gestion des pouvoirs et mandats",
+        "Quorum en temps réel",
+        "Pondération des voix",
+        "Vote des résolutions",
+        "Élections",
+        "Vote secret ou public",
+        "Résultats immédiats",
+        "Procès-verbal",
+        "Exports et rapports"
+      ]
+    },
+    "ca": {
+      "titre": "Les fonctionnalités adaptées à votre conseil",
+      "liste": [
+        "Délibérations",
+        "Élections",
+        "Quorum",
+        "Vote secret ou public",
+        "Pondération éventuelle",
+        "Présentiel, hybride ou à distance",
+        "Résultats immédiats",
+        "Exports et rapports"
+      ]
+    },
+    "cse": {
+      "titre": "Les fonctionnalités adaptées à votre élection CSE",
+      "liste": [
+        "Premier et second tours",
+        "Collèges électoraux",
+        "Listes de candidats",
+        "Titulaires et suppléants",
+        "Vote blanc",
+        "Calcul des résultats",
+        "Répartition des sièges",
+        "Dépouillement par clés chiffrées"
+      ]
+    },
+    "referendum": {
+      "titre": "Les fonctionnalités adaptées à votre consultation",
+      "liste": [
+        "Questions et libellés personnalisés",
+        "Vote anonyme",
+        "Vote sur une période définie",
+        "Participation suivie en temps réel",
+        "Résultats immédiats",
+        "Exports et rapports"
+      ]
+    },
+    "election": {
+      "titre": "Les fonctionnalités adaptées à votre élection",
+      "liste": [
+        "Élections internes",
+        "Scrutins à candidats",
+        "Collèges et pondération",
+        "Vote secret",
+        "Plusieurs tours",
+        "Résultats immédiats",
+        "Exports et rapports"
+      ]
+    },
+    "autre": {
+      "titre": "Les fonctionnalités adaptées à votre vote",
+      "liste": [
+        "Scrutins à résolutions",
+        "Scrutins à candidats",
+        "Règles de vote personnalisées",
+        "Vote secret ou public",
+        "Résultats immédiats",
+        "Exports et rapports"
+      ]
+    }
+  },
+  "regles": [
+    {
+      "nom": "Élection CSE : ProVote® uniquement",
+      "si": {
+        "vote": [
+          "cse"
+        ]
+      },
+      "principale": "provote",
+      "alternative": null,
+      "message": "Les boîtiers de vote ne sont pas proposés pour les élections CSE : le vote électronique de vos élections professionnelles se déroule sur ProVote®."
+    },
+    {
+      "nom": "Votants tous à distance : ProVote®",
+      "si": {
+        "mode": [
+          "distance"
+        ]
+      },
+      "principale": "provote",
+      "alternative": null,
+      "message": "Vos votants ne sont pas réunis : chacun vote depuis son ordinateur, sa tablette ou son smartphone."
+    },
+    {
+      "nom": "Hybride : ProVote®, boîtiers possibles pour la salle",
+      "si": {
+        "mode": [
+          "hybride"
+        ]
+      },
+      "principale": "provote",
+      "alternative": "boitier",
+      "message": "ProVote® réunit dans un même scrutin les votants présents en salle et ceux qui votent à distance, avec un quorum et un résultat uniques. En salle, les boîtiers de vote peuvent compléter le dispositif."
+    },
+    {
+      "nom": "Présentiel : boîtiers HF, ou ProVote®",
+      "si": {
+        "mode": [
+          "presentiel"
+        ]
+      },
+      "principale": "boitier",
+      "alternative": "provote",
+      "message": "Tous vos votants sont réunis en salle : deux solutions conviennent. Les boîtiers offrent un vote immédiat sans dépendre du réseau ; ProVote® fait voter chacun sur son propre appareil."
+    },
+    {
+      "nom": "Mode non défini : ProVote®, ou boîtiers si tout le monde est en salle",
+      "si": {},
+      "principale": "provote",
+      "alternative": "boitier",
+      "message": "ProVote® couvre les trois modalités : en salle, à distance ou en hybride. Si tous vos votants sont réunis en salle, les boîtiers de vote sont une alternative à considérer."
+    }
+  ],
+  "reassurance": [
+    {
+      "titre": "Sécurisé et conforme",
+      "texte": "RGPD et réglementations en vigueur",
+      "icone": "urnes"
+    },
+    {
+      "titre": "Accompagnement expert",
+      "texte": "À chaque étape de votre projet",
+      "icone": "interlocuteur"
+    },
+    {
+      "titre": "Gain de temps",
+      "texte": "Organisation simplifiée et résultats immédiats",
+      "icone": "test"
+    },
+    {
+      "titre": "Depuis 1998",
+      "texte": "Au service des organisations",
+      "icone": "competence"
+    },
+    {
+      "titre": "Développé en France",
+      "texte": "Plateforme conçue et exploitée par Mediavote",
+      "icone": "batiment"
+    }
+  ]
+}

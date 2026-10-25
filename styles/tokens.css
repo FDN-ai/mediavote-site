@@ -1,0 +1,112 @@
+/* ==========================================================================
+   MEDIA VOTE — Tokens de design (direction éditoriale)
+   Palette dérivée du logo. Contrastes vérifiés — voir docs/DESIGN-SYSTEM.md §2
+   ========================================================================== */
+
+:root {
+  /* --- Encre et neutres ------------------------------------------------ */
+  --mv-ink:            #14161C;   /* 18.08:1 sur blanc — AAA */
+  --mv-ink-2:          #4A4F5C;   /*  8.19:1 — AAA */
+  --mv-ink-3:          #5B6270;   /*  6.4:1  — AA  */
+  --mv-anthracite:     #23242B;
+
+  /* --- Bleus de marque ------------------------------------------------- */
+  --mv-blue:           #0A47A8;   /*  8.47:1 sur blanc — AAA */
+  --mv-blue-dark:      #08387F;   /* 11.16:1 */
+  --mv-blue-light:     #2E90DA;   /* accents graphiques uniquement */
+  --mv-blue-on-dark:   #6BB8EE;   /*  8.37:1 sur --mv-deep */
+
+  /* --- Fonds sombres (hero, bandeaux, footer) --------------------------- */
+  --mv-deep:           #0B1E3A;   /* navy profond — blanc à 16.4:1 */
+  --mv-deep-2:         #123563;   /* navy secondaire pour les dégradés */
+
+  /* --- Surfaces -------------------------------------------------------- */
+  --mv-white:          #FFFFFF;
+  --mv-surface:        #F5F7FA;
+  --mv-surface-blue:   #EBF2FC;
+
+  /* --- Bordures -------------------------------------------------------- */
+  --mv-border:         #D5DAE3;   /* décoratif */
+  --mv-border-ui:      #7C8698;   /*  3.67:1 — requis pour les champs */
+  --mv-ghost:          #D7DAE1;   /* mots surdimensionnés */
+
+  /* --- États ----------------------------------------------------------- */
+  --mv-success:        #0F7A4F;
+  --mv-error:          #B3261E;
+  --mv-warning:        #8A5A00;
+
+  /* --- Typographie ----------------------------------------------------- */
+  --mv-font: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --mv-text-display: 9.4vw;
+  --mv-text-h1:      3.5rem;
+  --mv-text-h2:      2.75rem;
+  --mv-text-h3:      1.625rem;
+  --mv-text-h4:      1.375rem;
+  --mv-text-lg:      1.25rem;
+  --mv-text-body:    1.0625rem;
+  --mv-text-sm:      .9375rem;
+  --mv-text-xs:      .8125rem;
+
+  /* --- Espacements — base 4px ------------------------------------------ */
+  --mv-space-1:  .25rem;   --mv-space-6:  1.5rem;
+  --mv-space-2:  .5rem;    --mv-space-8:  2rem;
+  --mv-space-3:  .75rem;   --mv-space-10: 2.5rem;
+  --mv-space-4:  1rem;     --mv-space-12: 3rem;
+  --mv-space-5:  1.25rem;  --mv-space-14: 3.5rem;
+  --mv-space-16: 4rem;     --mv-space-20: 5rem;
+  --mv-space-24: 6rem;
+
+  --mv-section-y: var(--mv-space-16);
+
+  /* --- Grille ---------------------------------------------------------- */
+  --mv-container: 88rem;
+  --mv-gutter:    1.5rem;
+  --mv-measure:   68ch;
+  --mv-inset:     .5rem;   /* encart de page qui donne le cadre arrondi */
+
+  /* --- Rayons ---------------------------------------------------------- */
+  --mv-radius-sm:   .25rem;
+  --mv-radius:      .75rem;
+  --mv-radius-lg:   1.5rem;
+  --mv-radius-xl:   2rem;
+  --mv-radius-full: 62.5rem;
+
+  /* --- Ombres ---------------------------------------------------------- */
+  --mv-shadow-sm: 0 1px 2px rgba(11, 30, 58, .06);
+  --mv-shadow:    0 2px 8px rgba(11, 30, 58, .08);
+  --mv-shadow-md: 0 .5rem 1.5rem rgba(11, 30, 58, .10);
+  --mv-shadow-lg: 0 1.5rem 3rem rgba(11, 30, 58, .20);
+
+  /* --- Transitions ----------------------------------------------------- */
+  --mv-transition: 150ms ease-out;
+  --mv-transition-slow: 200ms ease-out;
+}
+
+/* ==========================================================================
+   Grille rem adaptative
+   Le font-size racine est recalculé depuis la largeur du viewport : le
+   design reste proportionnel à toutes les tailles. Tout est donc en rem.
+   Au-delà de 1920px, un script prend le relais pour agrandir.
+   ========================================================================== */
+html { font-size: 16px; }
+
+/* Le template d'origine réduit la base en vw pur : à 1200px de large elle
+   tombait à 13px et le corps de texte devenait illisible. On conserve la
+   proportionnalité mais avec un PLANCHER de 16px — l'audience de Media Vote
+   (directions, DSI, juristes, souvent 45 ans et plus) lit des paragraphes
+   denses, pas des slogans. */
+@media (max-width: 1920px) { html { font-size: clamp(16px, 0.833333vw, 19px); } }
+@media (max-width:  640px) { html { font-size: clamp(15px, 4.444444vw, 17px); } }
+
+@media (min-width: 640px) {
+  :root {
+    --mv-gutter: 2.5rem;
+    --mv-inset: .75rem;
+    --mv-section-y: var(--mv-space-20);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root { --mv-section-y: var(--mv-space-24); }
+}

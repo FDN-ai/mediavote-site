@@ -1,0 +1,43 @@
+# Construit le site à chaque modification (dont les articles publiés depuis /admin/)
+# et le met en ligne sur GitHub Pages, en aperçu non indexable.
+name: Site — construction et mise en ligne
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Aucune dépendance npm : le générateur est en Node pur.
+      # Les contrôles éditoriaux (formulations interdites, titres, liens) font échouer
+      # la construction : un article non conforme n'est pas mis en ligne.
+      - run: node build.js --prod --base=/mediavote-site --noindex
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

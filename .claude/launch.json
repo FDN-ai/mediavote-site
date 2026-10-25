@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "media-vote",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "serve.js"
+      ],
+      "port": 4321,
+      "autoPort": true
+    },
+    {
+      "name": "media-vote-v3",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "serve.js"
+      ],
+      "env": {
+        "PORT": "4400"
+      },
+      "port": 4400
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+# Site généré
+dist/
+# Sauvegardes et documents sources du client (hors dépôt)
+_backup/
+00_adm/
+01_website/
+02_branding/
+assets/a-integrer/
+assets/sources/
+prototypes/
+content/_data/
+content/home.md
+content/solutions/
+# Outils et système
+node_modules/
+.playwright-mcp/
+.DS_Store
+qa/*.png
+qa/hero-propositions/

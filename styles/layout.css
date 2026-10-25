@@ -1,0 +1,123 @@
+/* ==========================================================================
+   MEDIA VOTE — Mise en page
+   Le cadre : <main> porte un encart de 0.5/0.75rem qui donne aux sections
+   sombres et au hero leur encadrement arrondi sur le fond blanc de la page.
+   ========================================================================== */
+
+main {
+  width: 100%;
+  overflow-x: clip;
+  padding: var(--mv-inset);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--mv-container);
+  margin-inline: auto;
+  padding-inline: var(--mv-gutter);
+}
+.container--narrow { max-width: 52rem; }
+
+/* --- Sections ------------------------------------------------------------- */
+
+.section {
+  position: relative;
+  padding-block: var(--mv-section-y);
+  background: var(--mv-white);
+}
+
+.section--tight { padding-block: var(--mv-space-16); }
+
+.section--surface { background: var(--mv-surface); }
+
+.section--blue { background: var(--mv-surface-blue); }
+
+/* Section blanche remontée sur la surface précédente : révèle un angle
+   arrondi et crée le rythme de « cartes empilées » du système. */
+.section--overlap {
+  border-radius: var(--mv-radius-xl);
+  margin-top: calc(var(--mv-space-10) * -1);
+}
+
+.section--dark {
+  background: var(--mv-deep);
+  color: var(--mv-white);
+  border-radius: var(--mv-radius-xl);
+  margin-top: var(--mv-space-3);
+}
+.section--dark h1, .section--dark h2,
+.section--dark h3, .section--dark h4 { color: var(--mv-white); }
+.section--dark p  { color: rgba(255, 255, 255, .82); }
+.section--dark a  { color: var(--mv-blue-on-dark); }
+.section--dark a:hover { color: #8CCAF3; }
+.section--dark li::marker { color: var(--mv-blue-on-dark); }
+
+/* --- En-tête de section --------------------------------------------------- */
+
+.section-head { max-width: 48rem; margin-bottom: var(--mv-space-14); }
+.section-head--center { margin-inline: auto; text-align: center; }
+.section-head--center p { margin-inline: auto; }
+.section-head h2 { margin-top: var(--mv-space-4); }
+.section-head .lead { margin-top: var(--mv-space-5); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: var(--mv-space-2);
+  font-size: var(--mv-text-xs); font-weight: 500;
+  text-transform: uppercase; letter-spacing: .22em;
+  color: var(--mv-ink-3);
+}
+.eyebrow::before {
+  content: ""; width: .375rem; height: .375rem;
+  border-radius: var(--mv-radius-full); background: var(--mv-blue);
+}
+.section--dark .eyebrow { color: rgba(255, 255, 255, .7); }
+.section--dark .eyebrow::before { background: var(--mv-blue-on-dark); }
+
+.lead {
+  font-size: var(--mv-text-lg);
+  line-height: 1.6;
+  color: var(--mv-ink-2);
+}
+.section--dark .lead { color: rgba(255, 255, 255, .82); }
+
+/* --- Grilles --------------------------------------------------------------
+   minmax(0, 1fr) partout : une piste `1fr` a un minimum `auto` qui
+   s'élargit sur un contenu insécable et fait déborder la grille.             */
+
+.grid { display: grid; gap: var(--mv-space-5); grid-template-columns: minmax(0, 1fr); }
+
+@media (min-width: 640px) {
+  .grid--2, .grid--3, .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .grid { gap: var(--mv-space-6); }
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* --- Deux colonnes (texte + visuel) --------------------------------------- */
+
+.split { display: grid; gap: var(--mv-space-10); align-items: center; }
+@media (min-width: 1024px) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--mv-space-12); }
+  .split--reverse > *:first-child { order: 2; }
+}
+
+.stack > * + * { margin-top: var(--mv-space-4); }
+.stack--lg > * + * { margin-top: var(--mv-space-10); }
+
+/* --- Fil d'Ariane --------------------------------------------------------- */
+
+.breadcrumb {
+  padding: var(--mv-space-4) 0 0;
+  font-size: var(--mv-text-sm);
+}
+.breadcrumb ol {
+  display: flex; flex-wrap: wrap; gap: var(--mv-space-2);
+  margin: 0; padding: 0; list-style: none; max-width: none;
+}
+.breadcrumb li { margin: 0; color: var(--mv-ink-3); }
+.breadcrumb li:not(:last-child)::after { content: "›"; margin-left: var(--mv-space-2); color: var(--mv-border-ui); }
+.breadcrumb a { color: var(--mv-ink-2); text-decoration: none; }
+.breadcrumb a:hover { color: var(--mv-blue); text-decoration: underline; }
+.breadcrumb [aria-current="page"] { color: var(--mv-ink); font-weight: 500; }

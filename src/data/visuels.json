@@ -1,0 +1,170 @@
+{
+  "boitier-main": {
+    "alpha": true,
+    "h": 978,
+    "w": 960,
+    "widths": [
+      360,
+      640,
+      960
+    ]
+  },
+  "emargement-boitier-tablette": {
+    "alpha": true,
+    "h": 640,
+    "w": 960,
+    "widths": [
+      360,
+      640,
+      960
+    ]
+  },
+  "emargement-rapport-signatures": {
+    "alpha": false,
+    "h": 749,
+    "w": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "emargement-rapport-stats": {
+    "alpha": false,
+    "h": 514,
+    "w": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "emargement-signature-liste": {
+    "alpha": true,
+    "h": 615,
+    "w": 960,
+    "widths": [
+      360,
+      640,
+      960
+    ]
+  },
+  "emargement-signature-provote": {
+    "alpha": true,
+    "h": 1068,
+    "w": 960,
+    "widths": [
+      360,
+      640,
+      960
+    ]
+  },
+  "emargement-signature-smartphone": {
+    "alpha": true,
+    "h": 1068,
+    "w": 960,
+    "widths": [
+      360,
+      640,
+      960
+    ]
+  },
+  "pilotage-tableau-de-bord": {
+    "alpha": false,
+    "h": 675,
+    "w": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "pilotage-tableau-quorum": {
+    "alpha": false,
+    "h": 401,
+    "w": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "provote-mobile": {
+    "alpha": true,
+    "h": 1082,
+    "w": 960,
+    "widths": [
+      360,
+      640,
+      960
+    ]
+  },
+  "provote-mobile-scene": {
+    "alpha": false,
+    "h": 1005,
+    "w": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "provote-pouvoirs-paysage": {
+    "alpha": false,
+    "h": 900,
+    "w": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "provote-tablette": {
+    "alpha": true,
+    "h": 1331,
+    "w": 960,
+    "widths": [
+      360,
+      640,
+      960
+    ]
+  },
+  "provote-tablette-mains": {
+    "alpha": false,
+    "h": 1536,
+    "w": 1024,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "provote-vote-scene": {
+    "alpha": false,
+    "h": 1005,
+    "w": 1200,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "video-LYcZGKb4SE0": {
+    "alpha": false,
+    "h": 720,
+    "w": 1280,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "video-VRgyj2rw4GY": {
+    "alpha": false,
+    "h": 720,
+    "w": 1280,
+    "widths": [
+      640,
+      1280
+    ]
+  }
+}
