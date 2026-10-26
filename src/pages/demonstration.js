@@ -74,19 +74,18 @@ const body = `
       <div>
         <h2>Demander une démonstration</h2>
 
-        ${C.prodNote(`<p><strong>Formulaire non raccordé (Q-B8).</strong> L’interface, la validation et les messages
-        d’erreur sont complets et fonctionnels. La <strong>soumission n’envoie rien</strong> et ne simule aucun envoi :
-        la destination technique — webhook Zoho CRM, service de formulaire tiers ou script d’envoi serveur —
-        est en attente de décision. Voir <code>docs/CONTENT-MODEL.md</code> §11.</p>`)}
+        ${C.prodNote(`<p><strong>Formulaire raccordé au Zoho CRM de Mediavote (26/10/2026).</strong> Chaque envoi crée
+        un prospect dans le module Prospects, source « Site Web Mediavote », avec notification du propriétaire.
+        Captcha vérifié par Zoho. Voir <code>docs/FORMULAIRES.md</code>.</p>`)}
 
-        <form class="form" data-validate novalidate>
+        <form class="form" ${F.formAttrs('demonstration')}>
           <p class="prefill-note" data-prefill-note hidden>Vos réponses au configurateur ont été reprises ci-dessous. Vous pouvez les modifier.</p>
           <p class="form__legend">Les champs marqués d’un astérisque (<span class="form__required" aria-hidden="true">*</span>) sont obligatoires.</p>
 
-          ${field({ id: 'organisation', label: 'Votre organisation', errorName: 'le nom de votre organisation', required: true, autocomplete: 'organization' })}
-          ${field({ id: 'nom', label: 'Nom et prénom', errorName: 'vos nom et prénom', required: true, autocomplete: 'name' })}
-          ${field({ id: 'email', label: 'E-mail professionnel', errorName: 'votre adresse e-mail professionnelle', type: 'email', required: true, autocomplete: 'email' })}
-          ${field({ id: 'telephone', label: 'Téléphone', errorName: 'votre numéro de téléphone', type: 'tel', autocomplete: 'tel', hint: 'Facultatif — utile si vous préférez être rappelé.' })}
+          ${field({ id: 'organisation', name: F.zoho.fields.company, label: 'Votre organisation', errorName: 'le nom de votre organisation', required: true, autocomplete: 'organization', maxlength: 200 })}
+          ${field({ id: 'nom', name: F.zoho.fields.lastName, label: 'Nom et prénom', errorName: 'vos nom et prénom', required: true, autocomplete: 'name', maxlength: 80 })}
+          ${field({ id: 'email', name: F.zoho.fields.email, label: 'E-mail professionnel', errorName: 'votre adresse e-mail professionnelle', type: 'email', required: true, autocomplete: 'email', maxlength: 100 })}
+          ${field({ id: 'telephone', name: F.zoho.fields.phone, label: 'Téléphone', errorName: 'votre numéro de téléphone', type: 'tel', autocomplete: 'tel', hint: 'Facultatif — utile si vous préférez être rappelé.', maxlength: 30 })}
           ${field({
             id: 'scrutin',
             label: 'Type de scrutin',
@@ -116,10 +115,12 @@ const body = `
             type: 'select',
             options: F.ECHEANCES
           })}
-          ${field({ id: 'message', label: 'Votre projet en quelques mots', type: 'textarea', hint: 'Vos contraintes statutaires, vos questions, le format envisagé — tout ce qui nous aidera à préparer la démonstration.' })}
+          ${field({ id: 'message', name: F.zoho.fields.commentaire, label: 'Votre projet en quelques mots', type: 'textarea', maxlength: 255, hint: 'Vos contraintes statutaires, vos questions, le format envisagé — 255 caractères au plus.' })}
 
           <input type="hidden" name="type_organisation" value="">
+          ${F.zohoHidden()}
           ${F.antiBot('d')}
+          ${F.captcha('d')}
           ${F.consent('d')}
 
           <button class="btn btn--xl btn--primary" type="submit" style="width:100%">Planifier ma démonstration</button>

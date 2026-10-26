@@ -394,21 +394,23 @@ function configurateur({ id = 'configurateur', headingLevel = 2 } = {}) {
         <p class="cfg__lead-alt">Vous préférez voir la solution en action&nbsp;?
           <a class="link-arrow" href="/demonstration/" data-cfg-demo>Demander une démonstration</a></p>
       </div>
-      <form class="form cfg__lead-form" data-validate novalidate>
+      <form class="form cfg__lead-form" ${F.formAttrs('configurateur')}>
         <p class="form__legend">Les champs marqués d’un astérisque (<span class="form__required" aria-hidden="true">*</span>) sont obligatoires.</p>
-        ${F.field({ id: 'l-nom', name: 'nom', label: 'Nom et prénom', errorName: 'vos nom et prénom', required: true, autocomplete: 'name' })}
-        ${F.field({ id: 'l-org', name: 'organisation', label: 'Votre organisation', errorName: 'le nom de votre organisation', required: true, autocomplete: 'organization' })}
-        ${F.field({ id: 'l-mail', name: 'email', label: 'E-mail professionnel', errorName: 'votre adresse e-mail professionnelle', type: 'email', required: true, autocomplete: 'email' })}
-        ${F.field({ id: 'l-tel', name: 'telephone', label: 'Téléphone', errorName: 'votre numéro de téléphone', type: 'tel', autocomplete: 'tel', hint: 'Facultatif — utile si vous préférez être rappelé.' })}
+        ${F.field({ id: 'l-nom', name: F.zoho.fields.lastName, label: 'Nom et prénom', errorName: 'vos nom et prénom', required: true, autocomplete: 'name', maxlength: 80 })}
+        ${F.field({ id: 'l-org', name: F.zoho.fields.company, label: 'Votre organisation', errorName: 'le nom de votre organisation', required: true, autocomplete: 'organization', maxlength: 200 })}
+        ${F.field({ id: 'l-mail', name: F.zoho.fields.email, label: 'E-mail professionnel', errorName: 'votre adresse e-mail professionnelle', type: 'email', required: true, autocomplete: 'email', maxlength: 100 })}
+        ${F.field({ id: 'l-tel', name: F.zoho.fields.phone, label: 'Téléphone', errorName: 'votre numéro de téléphone', type: 'tel', autocomplete: 'tel', hint: 'Facultatif — utile si vous préférez être rappelé.', maxlength: 30 })}
         ${F.field({ id: 'l-echeance', name: 'echeance', label: 'Échéance de votre scrutin', errorName: 'l’échéance de votre scrutin', type: 'select', options: F.ECHEANCES })}
-        ${F.field({ id: 'l-msg', name: 'message', label: 'Précisions', type: 'textarea', hint: 'Facultatif — vos contraintes, vos questions, votre calendrier.' })}
+        ${F.field({ id: 'l-msg', name: F.zoho.fields.commentaire, label: 'Précisions', type: 'textarea', maxlength: 255, hint: 'Facultatif — vos contraintes, vos questions, votre calendrier (255 caractères au plus).' })}
         <input type="hidden" name="source" value="configurateur">
         <input type="hidden" name="vote" data-cfg-field="vote">
         <input type="hidden" name="mode" data-cfg-field="mode">
         <input type="hidden" name="type_organisation" data-cfg-field="organisation">
         <input type="hidden" name="votants" data-cfg-field="votants">
         <input type="hidden" name="recommandation" data-cfg-field="recommandation">
+        ${F.zohoHidden()}
         ${F.antiBot('l')}
+        ${F.captcha('l')}
         ${F.consent('l')}
         <button class="btn btn--xl btn--primary" type="submit">Être recontacté par un expert${svg(ico.fleche, '')}</button>
         <p class="form__hint" role="status" aria-live="polite" data-form-status></p>

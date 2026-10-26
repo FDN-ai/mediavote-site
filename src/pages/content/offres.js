@@ -514,7 +514,7 @@ ${hero({
   eyebrow: 'Achat de boîtiers de vote',
   h1: 'Achat de boîtiers de vote&nbsp;: devenez autonome dans l’organisation de vos votes',
   lead: 'Maîtrisez votre budget, simplifiez l’organisation de vos scrutins et gagnez en autonomie. Boîtiers, récepteurs, logiciel de vote et formation pratique&nbsp;: une solution complète pour préparer, organiser et gérer vos sessions de vote vous-même.',
-  cta: 'Demander un devis', ctaUrl: '/contact/'
+  cta: 'Demander un devis', ctaUrl: '/contact/?objet=achat-boitiers'
 })}
 
 <section class="section">
@@ -597,7 +597,7 @@ ${C.ctaBand({
   eyebrow: 'Prêt à devenir autonome ?',
   title: 'Demandez votre devis pour l’achat de boîtiers de vote',
   text: 'Contactez Mediavote pour obtenir une proposition personnalisée, adaptée au nombre de votants, à la configuration de vos salles et à la fréquence de vos sessions de vote.',
-  primary: { label: 'Demander un devis', url: '/contact/' },
+  primary: { label: 'Demander un devis', url: '/contact/?objet=achat-boitiers' },
   secondary: { label: 'Voir les boîtiers en démonstration', url: '/demonstration/' },
   note: 'Réponse sous 48 heures ouvrées, sans engagement.'
 })}

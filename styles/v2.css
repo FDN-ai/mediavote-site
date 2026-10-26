@@ -593,3 +593,10 @@ html:not(.js) .cfg__actions { display: none; }
 .article th { background: var(--mv-surface); font-weight: 600; }
 .article__foot { margin-top: var(--mv-space-12); padding-top: var(--mv-space-8); border-top: 1px solid var(--mv-border); }
 .article__foot p { font-size: var(--mv-text-lg); max-width: none; }
+
+/* --- Captcha Zoho ------------------------------------------------------------ */
+.captcha { display: flex; align-items: center; gap: var(--mv-space-4); margin-bottom: var(--mv-space-3); }
+.captcha__img { display: block; width: 150px; height: 50px; border: 1px solid var(--mv-border); border-radius: var(--mv-radius-sm); background: var(--mv-surface); }
+.captcha__reload { padding: .4rem .2rem; font: inherit; font-size: var(--mv-text-sm); color: var(--mv-blue); background: none; border: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.captcha__reload:hover { color: var(--mv-blue-dark); }
+.form__control--short { max-width: 12rem; letter-spacing: .12em; }

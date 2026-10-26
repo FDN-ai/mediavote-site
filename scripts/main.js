@@ -571,6 +571,71 @@ function looksLikeBot(form) {
   return opened > 0 && Date.now() - opened < MIN_FILL_MS;
 }
 
+
+/* ---- Zoho : composition des champs cachés à partir des réponses ---------- */
+const SITE_BASE = (() => {
+  const sc = document.querySelector('script[type="module"][src$="/assets/js/main.js"]');
+  return sc ? sc.getAttribute('src').replace(/\/assets\/js\/main\.js$/, '') : '';
+})();
+const LABELS = {
+  scrutin: { ag: 'Assemblée générale', ca: 'Conseil d’administration', cse: 'Élections CSE', referendum: 'Consultation ou référendum', election: 'Autre élection', plusieurs: 'Plusieurs types de scrutins', autre: 'Autre / à définir' },
+  mode: { presentiel: 'présentiel', hybride: 'hybride', distance: 'à distance', nsp: 'mode à définir' },
+  votants: { 'moins-50': 'moins de 50 votants', '50-149': '50 à 149 votants', '150-299': '150 à 299 votants', '300-499': '300 à 499 votants', '500-999': '500 à 999 votants', '1000-plus': '1 000 votants et plus' },
+  reco: { provote: 'ProVote®', boitier: 'boîtiers de vote', 'provote+boitier': 'ProVote® ou boîtiers', 'boitier+provote': 'boîtiers ou ProVote®' }
+};
+/* « Prestation souhaitée » (liste Zoho : AG · Autre · Boitiers · CSE · Licence annuelle · ProVote AG) */
+function prestationFor(scrutin, reco) {
+  if (/^boitier/.test(reco)) return 'Boitiers';
+  if (scrutin === 'ag') return /^provote/.test(reco) ? 'ProVote AG' : 'AG';
+  if (scrutin === 'cse') return 'CSE';
+  return scrutin ? 'Autre' : '';
+}
+function zohoFill(form) {
+  const kind = form.dataset.zoho;
+  const v = n => (form.elements[n] && form.elements[n].value || '').trim();
+  const set = (sel, val) => { const el = form.querySelector(sel); if (el) el.value = val; };
+  const params = new URLSearchParams(location.search);
+  const parts = [];
+  let scrutin = '', reco = '';
+  if (kind === 'demonstration') {
+    scrutin = v('scrutin');
+    parts.push('Demande de démonstration');
+    if (scrutin) parts.push(LABELS.scrutin[scrutin] || scrutin);
+    if (v('mode')) parts.push(LABELS.mode[v('mode')] || v('mode'));
+    if (v('votants')) parts.push(LABELS.votants[v('votants')] || v('votants'));
+    if (v('type_organisation')) parts.push('organisation : ' + v('type_organisation'));
+    if (v('echeance')) parts.push('échéance : ' + v('echeance'));
+  } else if (kind === 'configurateur') {
+    scrutin = v('vote'); reco = v('recommandation');
+    parts.push('Configurateur du site');
+    if (scrutin) parts.push(LABELS.scrutin[scrutin] || scrutin);
+    if (v('mode')) parts.push(LABELS.mode[v('mode')] || v('mode'));
+    if (v('type_organisation')) parts.push('organisation : ' + v('type_organisation'));
+    if (v('votants')) parts.push(LABELS.votants[v('votants')] || v('votants'));
+    if (reco) parts.push('recommandation : ' + (LABELS.reco[reco] || reco));
+    if (v('echeance')) parts.push('échéance : ' + v('echeance'));
+  } else {
+    const objet = params.get('objet');
+    if (objet === 'achat-boitiers') { parts.push('Demande de devis — achat de boîtiers de vote'); reco = 'boitier'; }
+    else parts.push('Message depuis la page Contact');
+  }
+  set('[data-zoho-titre]', parts.join(' · ').slice(0, 255));
+  set('[data-zoho-prestation]', prestationFor(scrutin, reco));
+  const d = new Date();
+  set('[data-zoho-date]', `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`);
+  set('[data-zoho-return]', location.origin + SITE_BASE + '/merci/');
+}
+
+/* Captcha Zoho : nouveau code à la demande */
+document.querySelectorAll('[data-captcha-reload]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const img = btn.parentElement.querySelector('[data-captcha-img]');
+    if (img) img.src = img.dataset.captchaImg + '&d=' + Date.now();
+    const input = btn.closest('.form__row').querySelector('input');
+    if (input) { input.value = ''; input.focus(); }
+  });
+});
+
 document.querySelectorAll('form[data-validate]').forEach(form => {
   const stamp = form.querySelector('[data-form-opened]');
   if (stamp) stamp.value = String(Date.now());
@@ -597,13 +662,14 @@ document.querySelectorAll('form[data-validate]').forEach(form => {
       if (status) status.textContent = 'Merci de patienter quelques secondes avant d’envoyer le formulaire.';
       return;
     }
-    /* Aucun endpoint validé (Q-B8) : la soumission n'est pas simulée. */
-    if (status) {
-      status.textContent =
-        'Le formulaire est complet et valide. L’envoi n’est pas encore raccordé : ' +
-        'la destination technique est en attente de validation. ' +
-        'En attendant, écrivez-nous à contact@media-vote.com ou appelez le 01 85 09 27 45.';
-    }
+    /* Envoi au Zoho CRM de Mediavote (formulaire web, voir docs/FORMULAIRES.md) :
+       on complète les champs attendus par Zoho, puis le formulaire part en
+       POST natif ; Zoho redirige vers la page de remerciement du site. */
+    zohoFill(form);
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.setAttribute('aria-disabled', 'true'); }
+    if (status) status.textContent = 'Envoi en cours…';
+    form.submit();
   });
 });
 

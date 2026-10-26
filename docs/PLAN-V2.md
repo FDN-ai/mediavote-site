@@ -478,3 +478,13 @@ Validé par Alexis le 24/10/2026, sur son GitHub (`rockandberg`) dans un premier
 
 Les trois articles présents reprennent des contenus déjà rédigés et validés sur le site
 (pages AG, accompagnement, Qui sommes-nous) ; ils sont modifiables ou remplaçables depuis l'interface.
+
+
+---
+
+## 11. Formulaires raccordés au Zoho CRM de Mediavote (26/10/2026)
+
+Formulaire web Zoho « Site web Mediavote — prise de contact » (module Prospects) créé dans le CRM du
+client, à la demande d'Alexis et sans modifier l'existant. Les trois formulaires du site (contact,
+démonstration, fin du configurateur) y envoient directement leurs données ; captcha Zoho vérifié côté
+serveur ; page `/merci/` après envoi. Détail et correspondance des champs : `docs/FORMULAIRES.md`.

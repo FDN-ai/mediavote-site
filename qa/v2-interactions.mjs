@@ -56,12 +56,17 @@ const answer = async (p, vals) => {
   check('CA en présentiel → boîtiers ou ProVote®', /Boîtiers de vote HF.*ou ProVote®/.test(k4), k4.trim());
   check('Deux cartes affichées', (await p.locator('.cfg-res .solcard').count()) === 2);
 
-  /* Formulaire de fin : validation + anti-robots */
+  /* Formulaire de fin : validation, anti-robots, puis envoi vers Zoho — intercepté
+     avant de quitter le site : aucun prospect n'est créé pendant la recette. */
+  let zohoPost = null;
+  await p.route('**/crm/WebToLeadForm', async route => { zohoPost = route.request().postData(); await route.fulfill({ status: 200, contentType: 'text/html', body: '<title>intercepté</title>' }); });
   await p.locator('#l-nom').fill('Test Recette'); await p.locator('#l-org').fill('Organisation test');
   await p.locator('#l-mail').fill('recette@example.org'); await p.locator('#l-consent').check();
   await p.locator('.cfg__lead-form button[type=submit]').click();
   const st = await p.locator('.cfg__lead-form [data-form-status]').textContent();
-  check('Envoi non simulé, message honnête', /pas encore raccordé/.test(st), st.slice(0, 70));
+  check('Captcha obligatoire avant envoi', /code de sécurité/.test(st + (await p.locator('#l-captcha-error').textContent())), st.slice(0, 60));
+  await p.locator('#l-captcha').fill('abc12');
+  await p.locator('#l-captcha').blur(); await p.waitForTimeout(400); // le message d'erreur disparaît et décale le bouton
   await p.evaluate(() => { document.querySelector('.cfg__lead-form [data-form-opened]').value = String(Date.now()); });
   await p.locator('.cfg__lead-form button[type=submit]').click();
   const st2 = await p.locator('.cfg__lead-form [data-form-status]').textContent();
@@ -69,8 +74,21 @@ const answer = async (p, vals) => {
   await p.evaluate(() => { document.querySelector('.cfg__lead-form [data-form-opened]').value = '1'; document.querySelector('#l-site').value = 'spam'; });
   await p.locator('.cfg__lead-form button[type=submit]').click();
   check('Champ leurre rempli bloqué', /patienter/.test(await p.locator('.cfg__lead-form [data-form-status]').textContent()));
+  await p.evaluate(() => { document.querySelector('#l-site').value = ''; });
+  await p.locator('.cfg__lead-form button[type=submit]').click();
+  await p.waitForTimeout(1200);
+  const body = decodeURIComponent((zohoPost || '').replace(/\+/g, ' '));
+  check('Envoi POST vers Zoho (intercepté)', !!zohoPost, (zohoPost || '').slice(0, 40));
+  check('Jetons Zoho présents', /xnQsjsdp=858b5bd9/.test(body) && /actionType=TGVhZHM=/.test(body));
+  check('Champs Zoho renseignés', /Last Name=Test Recette/.test(body) && /Company=Organisation test/.test(body) && /Lead Source=Site Web Mediavote/.test(body));
+  check('Titre de la demande composé', /LEADCF5=Configurateur du site · Conseil d’administration · présentiel/.test(body), (body.match(/LEADCF5=[^&]*/) || [''])[0]);
+  check('Prestation souhaitée déduite', /LEADCF11=Boitiers/.test(body), (body.match(/LEADCF11=[^&]*/) || [''])[0]);
+  check('Date du jour et page de retour', /LEADCF117=\d{2}\/\d{2}\/\d{4}/.test(body) && /returnURL=http:\/\/localhost:\d+\/merci\//.test(body));
+  await p.goto(BASE + '/', { waitUntil: 'networkidle' }); await p.waitForTimeout(1500);
 
   /* Réinitialisation */
+  await answer(p, { vote: 'ag', mode: 'hybride', organisation: 'entreprise', votants: '150-299' });
+  await p.locator('form[data-cfg] button[type=submit]').click(); await p.waitForTimeout(400);
   await p.locator('.cfg__reset').click(); await p.waitForTimeout(200);
   check('Réinitialisation', await p.locator('[data-cfg-result]').isHidden() && (await p.evaluate(() => location.hash)) === '');
   check('Aucune erreur JavaScript (accueil)', p._errors.length === 0, p._errors.join(' | '));

@@ -100,7 +100,7 @@ function collectLinks(html) {
   const out = [];
   const re = /href="(\/[^"#]*)"/g;
   let m;
-  while ((m = re.exec(html))) out.push(m[1]);
+  while ((m = re.exec(html))) out.push(m[1].split('?')[0]);
   return out;
 }
 
@@ -232,7 +232,8 @@ function build() {
     ...require('./src/pages/content/solutions'),
     ...require('./src/pages/content/offres'),
     ...require('./src/pages/content/divers'),
-    ...require('./src/pages/actualites').pages
+    ...require('./src/pages/actualites').pages,
+    require('./src/pages/merci')
   ];
 
   // Pages d'attente — seulement celles qui ne sont pas encore rédigées
@@ -273,7 +274,7 @@ function build() {
   /* --- Pages orphelines --- */
   const linked = new Set([...allLinks]);
   written.forEach((w) => {
-    if (w.url !== '/' && !linked.has(w.url)) warnings.push(`page sans lien entrant : ${w.url}`);
+    if (w.url !== '/' && !w.noindex && !linked.has(w.url)) warnings.push(`page sans lien entrant : ${w.url}`);
   });
 
   /* --- Rapport --- */

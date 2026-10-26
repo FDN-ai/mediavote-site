@@ -583,32 +583,39 @@ ${hero({
 
       <div>
         <h2>Nous écrire</h2>
-        ${C.prodNote(`<p><strong>Formulaire non raccordé (Q-B8).</strong> L’interface, la validation et les
-        messages d’erreur sont fonctionnels. La soumission n’envoie rien et ne simule aucun envoi :
-        la destination technique est en attente de décision.</p>`)}
-        <form class="form" data-validate novalidate style="margin-top:var(--mv-space-6)">
+        ${C.prodNote(`<p><strong>Formulaire raccordé au Zoho CRM de Mediavote (26/10/2026)</strong> — prospect créé
+        avec la source « Site Web Mediavote », captcha vérifié par Zoho. Voir <code>docs/FORMULAIRES.md</code>.</p>`)}
+        <form class="form" ${C.forms.formAttrs('contact')} style="margin-top:var(--mv-space-6)">
           <p class="form__legend">Les champs marqués d’un astérisque (<span class="form__required" aria-hidden="true">*</span>) sont obligatoires.</p>
           <div class="form__row">
             <label class="form__label" for="c-nom">Nom et prénom<span class="form__required" aria-hidden="true">*</span></label>
-            <input class="form__control" type="text" id="c-nom" name="nom" required aria-required="true" aria-describedby="c-nom-error" data-error-name="vos nom et prénom" autocomplete="name">
+            <input class="form__control" type="text" id="c-nom" name="Last Name" maxlength="80" required aria-required="true" aria-describedby="c-nom-error" data-error-name="vos nom et prénom" autocomplete="name">
             <p class="form__error" id="c-nom-error" role="alert"></p>
           </div>
           <div class="form__row">
             <label class="form__label" for="c-org">Votre organisation<span class="form__required" aria-hidden="true">*</span></label>
-            <input class="form__control" type="text" id="c-org" name="org" required aria-required="true" aria-describedby="c-org-error" data-error-name="le nom de votre organisation" autocomplete="organization">
+            <input class="form__control" type="text" id="c-org" name="Company" maxlength="200" required aria-required="true" aria-describedby="c-org-error" data-error-name="le nom de votre organisation" autocomplete="organization">
             <p class="form__error" id="c-org-error" role="alert"></p>
           </div>
           <div class="form__row">
             <label class="form__label" for="c-mail">E-mail professionnel<span class="form__required" aria-hidden="true">*</span></label>
-            <input class="form__control" type="email" id="c-mail" name="mail" required aria-required="true" aria-describedby="c-mail-error" data-error-name="votre adresse e-mail professionnelle" autocomplete="email">
+            <input class="form__control" type="email" id="c-mail" name="Email" maxlength="100" required aria-required="true" aria-describedby="c-mail-error" data-error-name="votre adresse e-mail professionnelle" autocomplete="email">
             <p class="form__error" id="c-mail-error" role="alert"></p>
           </div>
           <div class="form__row">
             <label class="form__label" for="c-msg">Votre message<span class="form__required" aria-hidden="true">*</span></label>
-            <textarea class="form__control" id="c-msg" name="msg" required aria-required="true" aria-describedby="c-msg-error" data-error-name="votre message"></textarea>
+            <textarea class="form__control" id="c-msg" name="LEADCF4" maxlength="255" required aria-required="true" aria-describedby="c-msg-hint c-msg-error" data-error-name="votre message"></textarea>
+            <p class="form__hint" id="c-msg-hint">255 caractères au plus. Pour un dossier complet, joignez-le par e-mail à <a href="mailto:${site.email}">${site.email}</a>.</p>
             <p class="form__error" id="c-msg-error" role="alert"></p>
           </div>
+          <div class="form__row">
+            <label class="form__label" for="c-tel">Téléphone</label>
+            <input class="form__control" type="tel" id="c-tel" name="Phone" maxlength="30" aria-describedby="c-tel-error" data-error-name="votre numéro de téléphone" autocomplete="tel">
+            <p class="form__error" id="c-tel-error" role="alert"></p>
+          </div>
+          ${C.forms.zohoHidden()}
           ${C.forms.antiBot('c')}
+          ${C.forms.captcha('c')}
           ${C.forms.consent('c')}
           <button class="btn btn--xl btn--primary" type="submit">Envoyer ma demande${C.icons.arrow}</button>
           <p class="form__hint" role="status" aria-live="polite" data-form-status style="margin-top:var(--mv-space-4)"></p>

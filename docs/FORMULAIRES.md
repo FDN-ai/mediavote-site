@@ -1,10 +1,51 @@
 # Formulaires — fonctionnement et raccordement
 
-**État au 27/09/2026 : aucun formulaire n'envoie de données.** L'interface, la validation, la reprise
-des réponses du configurateur et la protection contre les robots sont en place et testées
-(`qa/v2-interactions.mjs`). La destination d'envoi reste à choisir (Q-B8). Tant qu'elle ne l'est pas,
-le formulaire affiche un message explicite et donne le téléphone et l'e-mail de Media Vote :
-aucun envoi n'est simulé.
+**État au 26/10/2026 : les trois formulaires envoient leurs données au Zoho CRM de Mediavote**
+(Q-B8 tranchée). Méthode : formulaire web Zoho « Web-to-Lead », créé le 26/10/2026 dans le CRM
+(Configuration → Canaux → Formulaires Web → « Site web Mediavote — prise de contact », module Prospects).
+Aucun serveur intermédiaire, aucune clé secrète : le navigateur du visiteur envoie le formulaire à
+`https://crm.zoho.eu/crm/WebToLeadForm`, Zoho crée le prospect et redirige vers `/merci/`.
+
+Rien n'a été modifié dans l'existant du CRM : ni champ, ni liste, ni prospect, ni règle. Le formulaire web
+est le seul objet créé. Chaque envoi crée un prospect avec la source « Site Web Mediavote », affecté à
+jp.leclercq (propriétaire par défaut proposé par Zoho), avec notification par e-mail.
+
+## Correspondance des champs
+
+| Champ du site | Champ Zoho (Prospects) | Limite |
+|---|---|---|
+| Nom et prénom | `Last Name` | 80 |
+| Organisation | `Company` | 200 |
+| E-mail | `Email` | 100 |
+| Téléphone | `Phone` | 30 |
+| Message / précisions | `LEADCF4` — Commentaire | **255 caractères** (champ existant de Mediavote) |
+| Titre composé par le site (type de demande, scrutin, mode, votants, organisation, recommandation, échéance) | `LEADCF5` — Titre de la demande | 255 |
+| Prestation déduite (AG, ProVote AG, Boitiers, CSE, Autre) | `LEADCF11` — Prestation souhaitée | liste existante |
+| Date d'envoi | `LEADCF117` — Date de la demande sur le site | JJ/MM/AAAA |
+| Source | `Lead Source` = « Site Web Mediavote » | valeur existante |
+| Code de sécurité | `enterdigest` (captcha Zoho) | vérifié par Zoho |
+
+Les jetons du formulaire (`xnQsjsdp`, `xmIwtLD`, `actionType`) et les identifiants du captcha sont
+dans `src/data/zoho.js`. Ils ne sont pas secrets : ils n'autorisent que la création d'un prospect via ce formulaire.
+
+## Captcha
+
+Le captcha affiché est celui de Zoho (« Captcha standard »), **vérifié côté serveur par Zoho** : un envoi
+sans code correct est refusé. Un bouton « Nouveau code » recharge l'image. Limite connue : pas
+d'alternative audio ; le téléphone et l'e-mail restent affichés à côté de chaque formulaire.
+Le champ leurre et l'horodatage du site restent actifs en plus ; Turnstile (ci-dessous) devient inutile.
+
+## À la mise en ligne sur media-vote.com
+
+Dans Zoho, Formulaires Web → « Site web Mediavote — prise de contact » → détails : remplacer l'URL de
+redirection `https://rockandberg.github.io/mediavote-site/merci/` par `https://www.media-vote.com/merci/`
+(le site envoie aussi sa propre adresse de retour, mais Zoho doit la connaître). Les deux domaines sont
+déjà déclarés comme emplacements du formulaire.
+
+## Si le formulaire est recréé dans Zoho
+
+Copier les nouvelles valeurs de `xnQsjsdp`, `xmIwtLD`, `formId` et `grpid` du code généré par Zoho dans
+`src/data/zoho.js`, puis reconstruire. Les noms `LEADCF…` ne changent pas tant que les champs existent.
 
 ## Les trois formulaires
 
