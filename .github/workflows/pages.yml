@@ -1,5 +1,8 @@
 # Construit le site à chaque modification (dont les articles publiés depuis /admin/)
-# et le met en ligne sur GitHub Pages, en aperçu non indexable.
+# et le met en ligne sur GitHub Pages.
+#   - Sans fichier public/CNAME : aperçu sous https://<compte>.github.io/<dépôt>/, non indexable.
+#   - Avec public/CNAME (nom de domaine, voir docs/MISE-EN-LIGNE.md) : site de production,
+#     à la racine du domaine, indexable.
 name: Site — construction et mise en ligne
 
 on:
@@ -27,7 +30,15 @@ jobs:
       # Aucune dépendance npm : le générateur est en Node pur.
       # Les contrôles éditoriaux (formulations interdites, titres, liens) font échouer
       # la construction : un article non conforme n'est pas mis en ligne.
-      - run: node build.js --prod --base=/mediavote-site --noindex
+      - name: Construction du site
+        run: |
+          if [ -f public/CNAME ]; then
+            echo "Domaine : $(cat public/CNAME) — construction de production"
+            node build.js --prod
+          else
+            echo "Aperçu sous /${{ github.event.repository.name }}/ — non indexable"
+            node build.js --prod --base=/${{ github.event.repository.name }} --noindex
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

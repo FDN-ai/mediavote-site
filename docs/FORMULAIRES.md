@@ -38,7 +38,7 @@ Le champ leurre et l'horodatage du site restent actifs en plus ; Turnstile (ci-d
 ## À la mise en ligne sur media-vote.com
 
 Dans Zoho, Formulaires Web → « Site web Mediavote — prise de contact » → détails : remplacer l'URL de
-redirection `https://rockandberg.github.io/mediavote-site/merci/` par `https://www.media-vote.com/merci/`
+redirection `https://fdn-ai.github.io/mediavote-site/merci/` par `https://www.media-vote.com/merci/`
 (le site envoie aussi sa propre adresse de retour, mais Zoho doit la connaître). Les deux domaines sont
 déjà déclarés comme emplacements du formulaire.
 

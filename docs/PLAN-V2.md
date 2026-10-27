@@ -463,7 +463,7 @@ Aperçu local : http://localhost:4400/ (configuration `media-vote-v3`). Non publ
 
 ## 10. Rubrique Actualités administrable — Decap CMS (24/10/2026)
 
-Validé par Alexis le 24/10/2026, sur son GitHub (`rockandberg`) dans un premier temps.
+Validé par Alexis le 24/10/2026, sur son GitHub (`rockandberg`) dans un premier temps ; transféré le 27/10/2026 sur le compte GitHub de Mediavote (`FDN-ai`).
 
 | Élément | Où |
 |---|---|
