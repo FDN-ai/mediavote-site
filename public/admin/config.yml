@@ -24,7 +24,7 @@ publish_mode: editorial_workflow
 locale: fr
 site_url: https://www.media-vote.com
 display_url: https://www.media-vote.com
-logo_url: /assets/img/logo-media-vote-blanc.png
+logo_url: ../assets/img/logo-media-vote-blanc.png   # chemin relatif : fonctionne aussi sous un sous-dossier (aperçu GitHub Pages)
 
 media_folder: public/assets/img/actualites
 public_folder: /assets/img/actualites
@@ -50,7 +50,7 @@ collections:
     fields:
       - { label: Titre, name: title, widget: string, hint: "60 caractères au plus pour un affichage complet dans Google." }
       - { label: Date de publication, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, picker_utc: false }
-      - { label: Catégorie, name: category, widget: select, options: [Réglementation, Guide pratique, Analyse, Actualité Mediavote, Retour d'expérience], default: Actualité }
+      - { label: Catégorie, name: category, widget: select, options: [Réglementation, Guide pratique, Analyse, Actualité Mediavote, Retour d'expérience], default: Actualité Mediavote }
       - { label: Chapô, name: description, widget: text, hint: "Deux phrases au plus (140 à 158 caractères). C'est aussi la description affichée par les moteurs de recherche.", pattern: ["^.{60,170}$", "Entre 60 et 170 caractères"] }
       - { label: Image d'illustration, name: image, widget: image, required: false, hint: "Facultative. 1 600 px de large au plus, format JPEG ou WebP." }
       - { label: Description de l'image, name: image_alt, widget: string, required: false, hint: "Obligatoire si une image est ajoutée : décrit ce que montre l'image, pour l'accessibilité et le référencement." }
