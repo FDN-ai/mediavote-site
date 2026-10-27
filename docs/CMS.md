@@ -18,14 +18,17 @@ secondes plus tard. Les images ajoutées vont dans `public/assets/img/actualites
 Un article enregistré sans être publié reste en brouillon (visible en local, signalé « Brouillon »,
 jamais mis en ligne en production).
 
-## 2. Rédiger depuis GitHub (dépôt `rockandberg/mediavote-site`)
+## 2. Rédiger depuis GitHub (dépôt `FDN-ai/mediavote-site`, compte Mediavote)
 
 Le dépôt contient les sources du site. À chaque modification sur la branche `main`, l'action
 `.github/workflows/pages.yml` reconstruit le site et le publie sur GitHub Pages.
 
 Pour que `/admin/` puisse se connecter à GitHub depuis le navigateur, il faut un **serveur de
-connexion OAuth** (GitHub l'exige ; GitHub Pages ne peut pas l'héberger). Gratuit, en deux étapes,
-à faire une seule fois par Alexis :
+connexion OAuth** (GitHub l'exige ; GitHub Pages ne peut pas l'héberger). **Fait le 27/10/2026** :
+le serveur tourne sur le Cloudflare de Mediavote (`https://mediavote-admin-auth.fanny-damon-5c6.workers.dev`,
+worker `mediavote-admin-auth`) et l'application OAuth « Mediavote — administration du site » existe
+sur le compte GitHub `FDN-ai`. Les deux étapes ci-dessous ne sont à refaire que si l'un des deux
+comptes change :
 
 ### a. Créer l'application OAuth sur GitHub
 
@@ -34,7 +37,7 @@ GitHub → *Settings* → *Developer settings* → *OAuth Apps* → *New OAuth A
 | Champ | Valeur |
 |---|---|
 | Application name | Mediavote — administration du site |
-| Homepage URL | https://rockandberg.github.io/mediavote-site/ |
+| Homepage URL | https://fdn-ai.github.io/mediavote-site/ |
 | Authorization callback URL | `https://<nom-du-worker>.workers.dev/callback` (adresse obtenue à l'étape b) |
 
 Noter le **Client ID** et générer un **Client secret**.
@@ -55,7 +58,7 @@ La commande affiche l'adresse du worker (`https://….workers.dev`). La reporter
 - dans `public/admin/config.yml` → `base_url`
 - dans l'application OAuth GitHub → *Authorization callback URL* = cette adresse + `/callback`
 
-Ensuite, **https://rockandberg.github.io/mediavote-site/admin/** → « Se connecter avec GitHub ».
+Ensuite, **https://fdn-ai.github.io/mediavote-site/admin/** → « Se connecter avec GitHub ».
 Chaque rédacteur doit avoir un compte GitHub et un accès en écriture au dépôt.
 
 ## 3. Circuit de publication

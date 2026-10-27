@@ -5,9 +5,9 @@
 
 backend:
   name: github
-  repo: rockandberg/mediavote-site      # dépôt du site — à remplacer par celui de Mediavote le moment venu
+  repo: FDN-ai/mediavote-site          # dépôt du site, compte GitHub de Mediavote
   branch: main
-  base_url: https://REMPLACER-PAR-LE-WORKER-OAUTH.workers.dev   # serveur de connexion GitHub (voir docs/CMS.md §3)
+  base_url: https://mediavote-admin-auth.fanny-damon-5c6.workers.dev   # serveur de connexion GitHub, Cloudflare de Mediavote (docs/CMS.md)
   commit_messages:
     create: "Article : {{slug}}"
     update: "Article mis à jour : {{slug}}"
