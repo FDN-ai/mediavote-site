@@ -27,8 +27,9 @@ Pour que `/admin/` puisse se connecter à GitHub depuis le navigateur, il faut u
 connexion OAuth** (GitHub l'exige ; GitHub Pages ne peut pas l'héberger). **Fait le 27/10/2026** :
 le serveur tourne sur le Cloudflare de Mediavote (`https://mediavote-admin-auth.fanny-damon-5c6.workers.dev`,
 worker `mediavote-admin-auth`) et l'application OAuth « Mediavote — administration du site » existe
-sur le compte GitHub `FDN-ai`. Les deux étapes ci-dessous ne sont à refaire que si l'un des deux
-comptes change :
+sur le compte GitHub `FDN-ai`. Vérifié le 27/10/2026 en ligne : connexion GitHub depuis `/admin/`,
+création d'un brouillon (branche `cms/actualites/…` + pull request dans le dépôt), suppression du
+brouillon. Les deux étapes ci-dessous ne sont à refaire que si l'un des deux comptes change :
 
 ### a. Créer l'application OAuth sur GitHub
 

@@ -488,3 +488,17 @@ Formulaire web Zoho « Site web Mediavote — prise de contact » (module Prospe
 client, à la demande d'Alexis et sans modifier l'existant. Les trois formulaires du site (contact,
 démonstration, fin du configurateur) y envoient directement leurs données ; captcha Zoho vérifié côté
 serveur ; page `/merci/` après envoi. Détail et correspondance des champs : `docs/FORMULAIRES.md`.
+
+---
+
+## 12. Remise sur les comptes Mediavote (27/10/2026)
+
+| Élément | État |
+|---|---|
+| Dépôt GitHub | `FDN-ai/mediavote-site` (copie complète, historique inclus, par « Import repository » depuis `rockandberg/mediavote-site`) |
+| Site d'aperçu | https://fdn-ai.github.io/mediavote-site/ — GitHub Pages, source « GitHub Actions », non indexable tant que `public/CNAME` n'existe pas |
+| Administration | https://fdn-ai.github.io/mediavote-site/admin/ — connexion GitHub via le worker Cloudflare `mediavote-admin-auth` (compte Cloudflare Mediavote) et l'app OAuth « Mediavote — administration du site » (compte GitHub FDN-ai) ; brouillon de test créé puis supprimé |
+| Zoho CRM | Formulaire web inchangé (mêmes jetons) ; URL de redirection → `https://fdn-ai.github.io/mediavote-site/merci/`, emplacement `https://fdn-ai.github.io` ajouté. Aucun prospect de test envoyé (en attente d'accord explicite) |
+| Mise en production | Procédure `docs/MISE-EN-LIGNE.md` : DNS + fichier `public/CNAME`, le workflow bascule seul en mode production |
+| Reste à faire par Mediavote/Alexis | Inviter `rockandberg` comme collaborateur du dépôt (Settings → Collaborators) pour les corrections depuis ce poste ; supprimer les aperçus `rockandberg` quand ils ne servent plus |
+
