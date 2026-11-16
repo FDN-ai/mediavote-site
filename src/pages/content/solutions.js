@@ -28,7 +28,7 @@ const hero = ({ eyebrow, h1, lead, cta, img = 'hero-accueil', visual = 'provote-
 /* --------------------------------------------- /solutions/elections-cse/ */
 const cseFaq = [
   { q: 'Faut-il un accord pour recourir au vote électronique ?', a: 'Le recours au vote électronique pour les élections du CSE doit être prévu par un accord d’entreprise ou de groupe. À défaut d’accord, l’employeur peut y recourir par décision unilatérale. Votre chef de projet vérifie ce point avec vous dès la réunion de lancement et vous indique les mentions à faire figurer.' },
-  { q: 'Qui détient les clés de dépouillement ?', a: 'Les membres du bureau de vote — président et assesseurs. Chacun reçoit un fragment de la clé générale dans un e-mail sécurisé. Il faut réunir un nombre minimum de fragments, que vous définissez, pour reconstituer la clé et ouvrir l’urne. Ni l’organisateur, ni Mediavote ne peuvent dépouiller seuls.' },
+  { q: 'Qui détient les clefs de dépouillement ?', a: 'Les membres du bureau de vote — président et assesseurs. Chacun reçoit un fragment de la clef générale dans un e-mail sécurisé. Il faut réunir un nombre minimum de fragments, que vous définissez, pour reconstituer la clef et ouvrir l’urne. Ni l’organisateur, ni Mediavote ne peuvent dépouiller seuls.' },
   { q: 'Comment le bureau de vote est-il formé ?', a: 'Mediavote organise une formation dédiée une fois les membres désignés. Elle peut être filmée sur demande. À l’issue, chaque membre reçoit un mode d’emploi illustré en PDF et une vidéo de démonstration, et dispose d’un accès direct au chef de projet pour ses questions.' },
   { q: 'Peut-on combiner vote électronique et vote papier ?', a: 'Oui. Les convocations comme les bulletins peuvent être envoyés par voie postale pour une partie de vos électeurs. Les votes papier sont dépouillés, scannés, puis injectés dans ProVote® une fois les votes numériques scellés. Le décompte final est consolidé automatiquement.' },
   { q: 'Que se passe-t-il s’il faut un second tour ?', a: 'Il est généré automatiquement à partir des résultats du premier. Vos électeurs sont informés des nouvelles dates et réutilisent les codes d’accès reçus initialement — aucun nouvel envoi n’est nécessaire.' },
@@ -39,7 +39,7 @@ const cse = {
   page: {
     url: '/solutions/elections-cse/', heroImage: 'hero-assemblee',
     title: 'Vote électronique pour élections CSE | Mediavote',
-    description: 'PAP, convocations, dépouillement par clés chiffrées, CERFA et second tour : Mediavote sécurise vos élections CSE avec un chef de projet dédié.',
+    description: 'PAP, convocations, dépouillement par clefs chiffrées, CERFA et second tour : Mediavote sécurise vos élections CSE avec un chef de projet dédié.',
     priority: 'P0',
     schema: ['Service', 'FAQPage', 'BreadcrumbList'],
     service: { name: 'Vote électronique pour élections CSE' },
@@ -51,7 +51,7 @@ ${hero({
   img: 'hero-assemblee',
   eyebrow: 'Élections CSE',
   h1: 'Organisez vos élections CSE en ligne, simplement et sereinement',
-  lead: 'Protocole d’accord préélectoral, listes et candidatures, convocations, dépouillement par clés chiffrées, CERFA et second tour : Mediavote pilote votre élection de bout en bout, avec un chef de projet dédié.',
+  lead: 'Protocole d’accord préélectoral, listes et candidatures, convocations, dépouillement par clefs chiffrées, CERFA et second tour : Mediavote pilote votre élection de bout en bout, avec un chef de projet dédié.',
   cta: 'Demander une démonstration CSE'
 })}
 
@@ -69,7 +69,7 @@ ${hero({
       </div>
       <div>
         <h3>Après le scrutin</h3>
-        <p>Dépouillement par activation des clés chiffrées, calcul du quotient électoral, attribution automatisée des sièges, édition des CERFA, génération du second tour si nécessaire.</p>
+        <p>Dépouillement par activation des clefs chiffrées, calcul du quotient électoral, attribution automatisée des sièges, édition des CERFA, génération du second tour si nécessaire.</p>
       </div>
     </div>
     <p style="margin-top:var(--mv-space-8);font-size:var(--mv-text-lg);font-weight:600;color:var(--mv-ink)">
@@ -86,7 +86,7 @@ ${hero({
       { title: 'Listes et candidatures', text: 'Constitution des listes, saisie des candidats titulaires et suppléants, dépôt des professions de foi et des documents de campagne.', meta: 'Vos électeurs les consultent depuis leur espace de vote.', link: '/provote/fonctionnalites/' },
       { title: 'Convocations et codes d’accès', text: 'Envoi automatisé, avec des codes personnels transmis par deux canaux distincts au choix : e-mail, SMS, courrier ou code remis en main propre.', meta: 'Combinable électeur par électeur, pour maîtriser les coûts.', link: '/modes-de-vote/vote-en-ligne/' },
       { title: 'Vote et suivi', text: 'Scrutin de liste ou vote par candidat avec possibilité de raturer. Suivi du quorum et du taux de participation en temps réel.', meta: 'Assistance technique disponible pendant toute la durée du scrutin.', link: '/modes-de-vote/vote-en-ligne/' },
-      { title: 'Dépouillement et attribution des sièges', text: 'Activation des clés chiffrées par le bureau de vote, calcul du quotient électoral et de la plus forte moyenne, attribution automatisée des sièges.', meta: 'Aucun membre ne peut dépouiller seul.', link: '/provote/fonctionnalites/' },
+      { title: 'Dépouillement et attribution des sièges', text: 'Activation des clefs chiffrées par le bureau de vote, calcul du quotient électoral et de la plus forte moyenne, attribution automatisée des sièges.', meta: 'Aucun membre ne peut dépouiller seul.', link: '/provote/fonctionnalites/' },
       { title: 'CERFA et second tour', text: 'Procès-verbaux CERFA pré-remplis, édités et signés depuis la plateforme. Le second tour est généré automatiquement si nécessaire.', meta: 'Vos électeurs réutilisent leurs codes du premier tour.', link: '/provote/fonctionnalites/' }
     ])}
   </div>
@@ -97,8 +97,8 @@ ${hero({
     ${C.sectionHead({ eyebrow: 'Rôles', title: 'Qui fait quoi, et qui peut quoi', lead: 'Quatre profils, des permissions strictement séparées. C’est cette séparation qui rend le scrutin difficile à contester.' })}
     <div class="grid grid--4">
       ${C.card({ title: 'L’électeur', text: 'Vote, consulte les listes et les documents, télécharge son attestation d’émargement et son certificat de dépôt.' })}
-      ${C.card({ title: 'L’organisateur (RH)', text: 'Valide les contenus en amont, suit la participation, édite le CERFA. **Ne détient aucune clé** et ne peut pas dépouiller.' })}
-      ${C.card({ title: 'Le bureau de vote', text: 'Président et assesseurs. Détiennent les clés de dépouillement, scellent les urnes, publient les résultats.' })}
+      ${C.card({ title: 'L’organisateur (RH)', text: 'Valide les contenus en amont, suit la participation, édite le CERFA. **Ne détient aucune clef** et ne peut pas dépouiller.' })}
+      ${C.card({ title: 'Le bureau de vote', text: 'Président et assesseurs. Détiennent les clefs de dépouillement, scellent les urnes, publient les résultats.' })}
       ${C.card({ title: 'L’administrateur', text: 'Le chef de projet Mediavote. Paramètre la session et garantit le bon déroulement technique.' })}
     </div>
   </div>
@@ -110,13 +110,13 @@ ${hero({
       <div>
         ${C.sectionHead({ eyebrow: 'Sécurité du dépouillement', title: 'Personne ne peut ouvrir l’urne seul' })}
         <p>
-          La clé générale est <strong>fragmentée</strong> et répartie entre les membres du bureau de vote.
+          La clef générale est <strong>fragmentée</strong> et répartie entre les membres du bureau de vote.
           Chacun reçoit son fragment dans un e-mail sécurisé. Au moment du dépouillement, chaque membre
-          saisit sa clé dans la case portant son identité ; le président vérifie l’ensemble des clés,
-          ce qui reconstitue la clé générale et ouvre l’urne.
+          saisit sa clef dans la case portant son identité ; le président vérifie l’ensemble des clefs,
+          ce qui reconstitue la clef générale et ouvre l’urne.
         </p>
         <p style="margin-top:var(--mv-space-5)">
-          Il est recommandé d’attribuer <strong>plus de trois clés</strong> et de définir un seuil
+          Il est recommandé d’attribuer <strong>plus de trois clefs</strong> et de définir un seuil
           inférieur au nombre total : une absence le jour du dépouillement ne bloque alors pas le processus.
         </p>
         <p style="margin-top:var(--mv-space-5)">

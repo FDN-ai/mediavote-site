@@ -45,12 +45,12 @@ const solutions = {
         meta: 'Instances qui se réunissent plusieurs fois par an.',
         link: '/solutions/vote-conseil-administration/' },
       { title: 'Élections CSE',
-        text: 'Protocole d’accord préélectoral, convocations, dépouillement par clés chiffrées, CERFA et second tour.',
+        text: 'Protocole d’accord préélectoral, convocations, dépouillement par clefs chiffrées, CERFA et second tour.',
         meta: 'Employeurs d’au moins 11 salariés.',
         link: '/solutions/elections-cse/' },
       { title: 'Consultations et référendums',
-        text: 'Consulter salariés, adhérents ou administrés sans convoquer une assemblée générale.',
-        meta: 'Décisions qui n’exigent pas la solennité d’une AG.',
+        text: 'Consulter salariés, adhérents ou administrés sans déplacement ou traitement de courrier papier.',
+        meta: 'Pour consulter, sonder, orienter les décisions.',
         link: '/solutions/consultations-referendums/' }
     ])}
   </div>
@@ -153,10 +153,10 @@ const modes = {
           <tr><th scope="col">Critère</th><th scope="col">Vote en ligne</th><th scope="col">Vote par boîtier</th><th scope="col">Vote hybride</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Où sont vos votants</th><td>Dispersés, ou chez eux</td><td>Réunis dans une salle</td><td>Une partie sur place, une partie à distance</td></tr>
+          <tr><th scope="row">Où sont vos votants</th><td>Dispersés, ou chez eux</td><td>Réunis dans une salle</td><td>Une partie sur place, une partie à distance — tous sur ProVote®</td></tr>
           <tr><th scope="row">Durée du scrutin</th><td>En séance, ou sur plusieurs jours</td><td>En séance uniquement</td><td>En séance, avec une fenêtre possible à distance</td></tr>
-          <tr><th scope="row">Matériel</th><td>Aucun — le terminal du votant suffit</td><td>Boîtiers fournis et remis à l’entrée</td><td>Boîtiers en salle, terminaux à distance</td></tr>
-          <tr><th scope="row">Dépendance au réseau</th><td>Connexion Internet nécessaire</td><td>Fonctionne en salle sans que vos votants aient besoin de réseau</td><td>Réseau nécessaire pour le volet à distance</td></tr>
+          <tr><th scope="row">Matériel</th><td>Aucun — le terminal du votant suffit</td><td>Boîtiers fournis et remis à l’entrée</td><td>Aucun — le terminal de chaque votant, en salle comme à distance</td></tr>
+          <tr><th scope="row">Dépendance au réseau</th><td>Connexion Internet nécessaire</td><td>Fonctionne en salle sans que vos votants aient besoin de réseau</td><td>Connexion Internet nécessaire, en salle comme à distance</td></tr>
           <tr><th scope="row">Affichage des résultats</th><td>À la clôture de chaque vote</td><td>À l’écran, immédiatement en séance</td><td>Consolidé, à la clôture de chaque vote</td></tr>
           <tr><th scope="row">Effet sur la participation</th><td>Lève les obstacles de déplacement</td><td>Maximale parmi les présents</td><td>Additionne présents et empêchés</td></tr>
         </tbody>

@@ -65,7 +65,7 @@ ${hero({
 
 <section class="section section--surface">
   <div class="container">
-    ${C.sectionHead({ eyebrow: 'Fonctionnement', title: 'Deux régimes de vote, selon votre séance' })}
+    ${C.sectionHead({ eyebrow: 'Fonctionnement', title: 'Deux modes de vote, selon votre séance', lead: 'Le vote synchrone (en temps réel) et le vote asynchrone (sur une période définie).' })}
     <div class="grid grid--2">
       ${C.card({ title: 'En temps réel — synchrone',
         text: 'Tout le monde vote au même moment, pendant la séance, souvent en parallèle d’une visioconférence. Chaque vote est ouvert et fermé à la demande du président. Les résultats sont partagés à la clôture de chaque vote.',
@@ -228,12 +228,31 @@ ${hero({
   </div>
 </section>
 
+<section class="section section--blue">
+  <div class="container">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Émargement digital</span>
+        <h2 style="margin-top:var(--mv-space-4)">L’émargement sur tablette, pour vos assemblées en salle</h2>
+        <p class="lead" style="margin-top:var(--mv-space-5)">Fini la file d’attente alphabétique, les listes A3 imprimées en plusieurs exemplaires, les ajouts griffonnés au dernier moment et le fichier final à scanner&nbsp;: vos participants émargent sur tablette, et la liste se met à jour en temps réel.</p>
+        <ul class="checklist" style="margin-top:var(--mv-space-6)">
+          <li>${C.svg(C.ico.coche, 'checklist__ico')}<span><strong>En amont</strong>&nbsp;: session créée avec les coordonnées des participants, leurs pouvoirs et leur numéro de boîtier, interface à vos couleurs, informations pratiques (lieu, horaires, plan)</span></li>
+          <li>${C.svg(C.ico.coche, 'checklist__ico')}<span><strong>À l’accueil</strong>&nbsp;: validation du statut, signature sur tablette, ajout ou modification d’informations, liste synchronisée et état des arrivées en temps réel</span></li>
+          <li>${C.svg(C.ico.coche, 'checklist__ico')}<span><strong>Après la séance</strong>&nbsp;: rapport d’émargement en PDF et en Excel, généré d’un clic à la clôture, dans le respect du RGPD</span></li>
+        </ul>
+        <p style="margin-top:var(--mv-space-6)"><strong>Gain de temps, zéro papier, organisation optimisée.</strong></p>
+      </div>
+      <figure class="product-shot">${C.picture('emargement-boitier-tablette', { alt: 'Remise d’un boîtier de vote à un participant qui signe la feuille d’émargement sur tablette', sizes: '(min-width: 1024px) 40vw, 90vw' })}</figure>
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     ${C.sectionHead({ eyebrow: 'Déroulé', title: 'Comment se passe une assemblée équipée' })}
     ${C.timeline([
       { step: 'Avant', title: 'Préparation en salle', text: 'Le chef de projet installe le dispositif et vérifie chaque boîtier. Vos résolutions et vos règles de majorité sont déjà paramétrées.', deliverable: 'un test complet avant l’arrivée des participants.' },
-      { step: 'Accueil', title: 'Émargement et remise', text: 'Chaque votant émarge — sur tablette, avec signature si vos statuts l’exigent — et reçoit son boîtier, rattaché à son identité, à ses pouvoirs et à son poids de vote.', deliverable: 'le quorum calculé en temps réel à mesure des arrivées.' },
+      { step: 'Accueil', title: 'Émargement et remise', text: 'Chaque votant émarge sur tablette — avec signature si vos statuts l’exigent — et reçoit son boîtier, rattaché à son identité, à ses pouvoirs et à son poids de vote.', deliverable: 'le quorum calculé en temps réel à mesure des arrivées.' },
       { step: 'Séance', title: 'Vote et affichage', text: 'Le président ouvre chaque vote, l’assemblée se prononce, le président clôt. Le résultat est calculé et affiché immédiatement à l’écran.', deliverable: 'le suivi des votes exprimés, vote par vote.' },
       { step: 'Après', title: 'Restitution', text: 'Récupération des boîtiers, édition des documents. Le procès-verbal et le rapport d’émargement sont disponibles avant que vous ne quittiez la salle.', deliverable: 'les PV et rapports en PDF et en Excel.' }
     ])}
@@ -279,7 +298,7 @@ lors de l’intégration — à vérifier avant mise en ligne.</p>`)}
 
 <section class="section section--dark">
   <div class="container">
-    ${C.sectionHead({ eyebrow: 'Et si certains ne peuvent pas venir ?', title: 'Le boîtier se combine avec le vote à distance', lead: 'C’est le vote hybride : les votes exprimés en salle et à distance sont comptés ensemble, avec un quorum consolidé et un résultat unique par résolution.' })}
+    ${C.sectionHead({ eyebrow: 'Et si certains ne peuvent pas venir ?', title: 'Pour un vote hybride, ProVote®', lead: 'Quand une partie des participants est à distance, c’est ProVote® qui fait voter tout le monde — en salle comme à distance — avec un quorum et des votes consolidés en temps réel.' })}
     <p><a class="link-arrow" href="/modes-de-vote/vote-hybride/">Découvrir le vote hybride</a></p>
   </div>
 </section>
@@ -313,8 +332,8 @@ const hybride = {
     faqItems: [
       { q: 'Les votes des deux publics sont-ils vraiment comptés ensemble ?', a: 'Oui. Il n’y a pas deux scrutins qu’on additionnerait après coup : il y a un seul scrutin, alimenté par deux canaux. Le quorum est consolidé en temps réel et chaque résolution produit un résultat unique.' },
       { q: 'Comment émargent les membres à distance ?', a: 'Ils émargent en ligne, avec les mêmes options que vos membres en salle : émargement simple, signature électronique ou case à cocher. Le rapport d’émargement final réunit les deux publics dans un seul document.' },
-      { q: 'Et si le réseau tombe pendant la séance ?', a: 'Les votants en salle ne dépendent pas de la connexion des participants distants. Votre chef de projet, présent sur place ou en visioconférence, gère la situation avec vous — reprise du vote, bascule vers un régime asynchrone, ou report d’une résolution.' },
-      { q: 'L’hybride coûte-t-il plus cher que les autres modalités ?', a: 'Il mobilise deux dispositifs, donc plus de préparation. En contrepartie, il évite souvent un report d’assemblée pour quorum insuffisant — ce qui coûte bien davantage. Nous chiffrons votre cas précis lors de l’échange.' },
+      { q: 'Et si le réseau tombe pendant la séance ?', a: 'Chaque participant vote depuis son propre appareil : la connexion de l’un n’affecte pas celle des autres. Votre chef de projet, présent sur place ou en visioconférence, gère la situation avec vous — reprise du vote, bascule vers un régime asynchrone, ou report d’une résolution.' },
+      { q: 'L’hybride coûte-t-il plus cher que les autres modalités ?', a: 'Il réunit deux publics, donc plus de préparation. En contrepartie, il évite souvent un report d’assemblée pour quorum insuffisant — ce qui coûte bien davantage. Nous chiffrons votre cas précis lors de l’échange.' },
       { q: 'Faut-il une visioconférence ?', a: 'Ce n’est pas obligatoire, mais c’est presque toujours souhaitable : les membres à distance doivent pouvoir suivre les débats avant de voter. Nous nous articulons avec l’outil de visioconférence que vous utilisez déjà.' }
     ]
   },
@@ -324,7 +343,7 @@ ${hero({
   img: 'hero-accueil',
   eyebrow: 'Vote hybride',
   h1: 'Réunissez tous vos votants, sur place comme à distance',
-  lead: 'Une même assemblée, deux publics. Les votes exprimés en salle et à distance sont comptés ensemble, avec un quorum consolidé en temps réel et un résultat unique par résolution.',
+  lead: 'Une même assemblée, deux publics, une seule plateforme : avec ProVote®, les participants en salle et à distance votent ensemble, avec un quorum consolidé en temps réel et un résultat unique par résolution.',
   ctaLabel: 'Étudier mon dispositif hybride'
 })}
 
@@ -333,7 +352,7 @@ ${hero({
     ${C.sectionHead({ eyebrow: 'Définition', title: 'Ce que l’hybride est — et ce qu’il n’est pas' })}
     <p class="lead">
       L’hybride n’est pas une assemblée en salle à laquelle on ajoute une visioconférence.
-      C’est <strong>un seul scrutin alimenté par deux canaux</strong>.
+      C’est <strong>un seul scrutin, sur ProVote®, pour les participants en salle comme à distance</strong>.
     </p>
     <p style="margin-top:var(--mv-space-5)">
       La différence est décisive au moment du décompte. Deux scrutins séparés produisent deux
@@ -347,7 +366,7 @@ ${hero({
   <div class="container">
     ${C.sectionHead({ eyebrow: 'Mécanique', title: 'Comment les deux publics se rejoignent' })}
     <div class="grid grid--3">
-      ${C.card({ icon: 'boitier', title: 'En salle', text: 'Émargement à l’entrée, boîtier remis en main propre — ou vote depuis le téléphone du participant, selon la configuration retenue.' })}
+      ${C.card({ icon: 'boitier', title: 'En salle', text: 'Émargement à l’entrée, sur tablette ou en ligne, puis vote depuis son ordinateur, sa tablette ou son smartphone — sur ProVote®, comme les participants distants.' })}
       ${C.card({ icon: 'enLigne', title: 'À distance', text: 'Codes reçus par deux canaux, émargement en ligne, vote depuis n’importe quel terminal, en parallèle de la séance.' })}
       ${C.card({ icon: 'hybride', title: 'Consolidé', text: 'Un quorum unique qui monte à mesure des émargements des deux côtés. Un résultat unique à la clôture de chaque vote.' })}
     </div>
@@ -378,7 +397,7 @@ ${hero({
           des deux côtés.
         </p>
         <p style="margin-top:var(--mv-space-5)">
-          Le test à J-5 se fait avec les deux dispositifs, dans les conditions réelles.
+          Le test à J-5 se fait avec les deux publics, dans les conditions réelles.
         </p>
         <p style="margin-top:var(--mv-space-6)"><a class="link-arrow" href="/offres/accompagnement-sur-mesure/">Le détail de notre accompagnement</a></p>
       </div>
@@ -393,8 +412,8 @@ ${hero({
     ${C.faq([
       { q: 'Les votes des deux publics sont-ils vraiment comptés ensemble ?', a: 'Oui. Il n’y a pas deux scrutins qu’on additionnerait après coup : il y a un seul scrutin, alimenté par deux canaux. Le quorum est consolidé en temps réel et chaque résolution produit un résultat unique.' },
       { q: 'Comment émargent les membres à distance ?', a: 'Ils émargent en ligne, avec les mêmes options que vos membres en salle : émargement simple, signature électronique ou case à cocher. Le rapport d’émargement final réunit les deux publics dans un seul document.' },
-      { q: 'Et si le réseau tombe pendant la séance ?', a: 'Les votants en salle ne dépendent pas de la connexion des participants distants. Votre chef de projet, présent sur place ou en visioconférence, gère la situation avec vous — reprise du vote, bascule vers un régime asynchrone, ou report d’une résolution.' },
-      { q: 'L’hybride coûte-t-il plus cher que les autres modalités ?', a: 'Il mobilise deux dispositifs, donc plus de préparation. En contrepartie, il évite souvent un report d’assemblée pour quorum insuffisant — ce qui coûte bien davantage. Nous chiffrons votre cas précis lors de l’échange.' },
+      { q: 'Et si le réseau tombe pendant la séance ?', a: 'Chaque participant vote depuis son propre appareil : la connexion de l’un n’affecte pas celle des autres. Votre chef de projet, présent sur place ou en visioconférence, gère la situation avec vous — reprise du vote, bascule vers un régime asynchrone, ou report d’une résolution.' },
+      { q: 'L’hybride coûte-t-il plus cher que les autres modalités ?', a: 'Il réunit deux publics, donc plus de préparation. En contrepartie, il évite souvent un report d’assemblée pour quorum insuffisant — ce qui coûte bien davantage. Nous chiffrons votre cas précis lors de l’échange.' },
       { q: 'Faut-il une visioconférence ?', a: 'Ce n’est pas obligatoire, mais c’est presque toujours souhaitable : les membres à distance doivent pouvoir suivre les débats avant de voter. Nous nous articulons avec l’outil de visioconférence que vous utilisez déjà.' }
     ], 'hybride-faq')}
   </div>

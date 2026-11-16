@@ -8,7 +8,7 @@ const path = require('path');
 
 const cfg = require('../data/configurateur.json');
 const F = require('./forms');
-const { groupes } = require('../data/references');
+const { groupes, licence } = require('../data/references');
 
 const LOGO_DIMS = (() => {
   const p = path.join(__dirname, '../data/logos-dimensions.json');
@@ -143,7 +143,8 @@ function logoImg(l) {
     </li>`;
 }
 
-function logoWall({ condensed = false } = {}) {
+function logoWall({ condensed = false, licence: onlyLicence = false } = {}) {
+  if (onlyLicence) return `<ul class="logos">${licence.map(logoImg).join('')}</ul>`;
   if (condensed) {
     const all = groupes.flatMap((g) => g.logos.filter((l) => l.accueil));
     return `<ul class="logos logos--condensed">${all.map(logoImg).join('')}</ul>`;
@@ -156,16 +157,23 @@ function logoWall({ condensed = false } = {}) {
   </div>`;
 }
 
-function logoGroup(id) {
-  const g = groupes.find((x) => x.id === id);
+/* Panneau d'une page secteur : un ou plusieurs groupes (`id` ou `id:sous`),
+   douze logos au plus, ceux de l'accueil d'abord. */
+function logoGroup(ids) {
+  const picked = [].concat(ids).flatMap((ref) => {
+    const [id, sous] = ref.split(':');
+    const g = groupes.find((x) => x.id === id);
+    return g.logos.filter((l) => !sous || l.sous === sous);
+  });
+  const logos = [...picked.filter((l) => l.accueil), ...picked.filter((l) => !l.accueil)].slice(0, 12);
   return `<div class="logo-panel">
       <p class="logo-panel__title">Ils votent avec Mediavote</p>
-      <ul class="logos logos--panel">${g.logos.map(logoImg).join('')}</ul>
+      <ul class="logos logos--panel">${logos.map(logoImg).join('')}</ul>
       <a class="link-arrow" href="/references/">Toutes nos références</a>
     </div>`;
 }
 
-/* Schéma — la clé de dépouillement est fragmentée entre les membres du
+/* Schéma — la clef de dépouillement est fragmentée entre les membres du
    bureau de vote ; il en faut un nombre minimum pour ouvrir l'urne. */
 function keySchema() {
   const people = [0, 1, 2, 3, 4].map((i) => {
@@ -182,8 +190,8 @@ function keySchema() {
   }).join('');
   return `<figure class="schema">
       <svg viewBox="0 0 500 305" role="img" aria-labelledby="schema-cle-t schema-cle-d">
-        <title id="schema-cle-t">Clé de dépouillement fragmentée</title>
-        <desc id="schema-cle-d">Cinq membres du bureau de vote détiennent chacun un fragment de la clé. Trois fragments réunis suffisent à ouvrir l’urne ; aucun membre ne peut l’ouvrir seul.</desc>
+        <title id="schema-cle-t">Clef de dépouillement fragmentée</title>
+        <desc id="schema-cle-d">Cinq membres du bureau de vote détiennent chacun un fragment de la clef. Trois fragments réunis suffisent à ouvrir l’urne ; aucun membre ne peut l’ouvrir seul.</desc>
         <g transform="translate(250 64)">
           <rect x="-58" y="-38" width="116" height="80" rx="12" fill="#0B1E3A"/>
           <rect x="-30" y="-50" width="60" height="16" rx="4" fill="#0B1E3A"/>
@@ -253,7 +261,7 @@ function solutionCard(key, { cible } = {}) {
   return `<article class="solcard solcard--${key}"><div class="solcard__in">
     <div class="solcard__media">${picture(s.visuel, { alt: s.visuelAlt, sizes: '(min-width: 1024px) 22vw, 60vw' })}</div>
     <div class="solcard__body">
-      <span class="solcard__kicker">${key === 'provote' ? 'Vote en ligne, à distance ou hybride' : 'Vote en salle'}</span>
+      <span class="solcard__kicker">${key === 'provote' ? 'En salle, à distance ou en hybride' : 'Vote en salle'}</span>
       <h3 class="solcard__name">${s.nom}</h3>
       <p class="solcard__pitch">${s.accroche}</p>
       <p>${s.description}</p>
@@ -281,11 +289,11 @@ function scrutinSolutions(voteId) {
     <article class="scrutin-sol__item">
       <div class="scrutin-sol__media">${picture(p.visuel, { alt: p.visuelAlt, sizes: '(min-width: 1024px) 14vw, 40vw' })}</div>
       <div>
-        <span class="scrutin-sol__when">${svg(ico.enLigne, 'scrutin-sol__ico')}${cse ? 'Pour toutes vos élections CSE' : 'Votants à distance ou en hybride'}</span>
+        <span class="scrutin-sol__when">${svg(ico.enLigne, 'scrutin-sol__ico')}${cse ? 'Pour toutes vos élections CSE' : 'En salle, à distance ou en hybride'}</span>
         <h3>ProVote®</h3>
         <p>${cse
-          ? 'Le vote électronique de vos élections professionnelles, du premier au second tour, avec dépouillement par clés chiffrées.'
-          : 'Chacun vote depuis son ordinateur, sa tablette ou son smartphone. Les votes en salle et à distance sont réunis dans un résultat unique.'}</p>
+          ? 'Le vote électronique de vos élections professionnelles, du premier au second tour, avec dépouillement par clefs chiffrées.'
+          : 'Chacun vote depuis son ordinateur, sa tablette ou son smartphone, qu’il soit en salle ou à distance. Tous les votes sont réunis dans un résultat unique.'}</p>
         <a class="link-arrow" href="${p.url}">Découvrir ProVote® pour ${opt.cible}</a>
       </div>
     </article>
@@ -375,7 +383,7 @@ function configurateur({ id = 'configurateur', headingLevel = 2 } = {}) {
 
     <div class="cfg__nojs">
       <p><strong>Le calcul de la recommandation nécessite JavaScript.</strong> En attendant, voici la règle générale&nbsp;:
-      ProVote® pour les votants à distance ou en hybride, les boîtiers pour un vote en salle.
+      ProVote® en salle, à distance ou en hybride ; les boîtiers quand tous les votants sont réunis en salle.
       <a href="/contact/">Parlez-nous de votre projet</a>, nous vous orientons.</p>
       ${compatTable()}
     </div>

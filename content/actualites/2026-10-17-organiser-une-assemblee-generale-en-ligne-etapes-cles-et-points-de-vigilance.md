@@ -1,5 +1,5 @@
 ---
-title: "Organiser une AG en ligne : étapes clés et points de vigilance"
+title: "Organiser une AG en ligne : étapes clefs et points de vigilance"
 date: 2026-10-17
 category: Guide pratique
 description: "De la réunion de lancement à la restitution des résultats : le déroulé d’une assemblée générale en ligne et les points de vigilance qui conditionnent la séance."

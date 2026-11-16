@@ -11,7 +11,7 @@ const faqItems = [
   },
   {
     q: 'Comment garantissez-vous le secret du vote ?',
-    a: 'L’urne d’émargement et l’urne des bulletins sont séparées : savoir qu’une personne a voté ne permet pas de savoir ce qu’elle a voté. Le dépouillement exige la réunion de plusieurs clés chiffrées, détenues par différents membres du bureau de vote. Aucune personne seule, y compris chez Mediavote, ne peut ouvrir l’urne.'
+    a: 'L’urne d’émargement et l’urne des bulletins sont séparées : savoir qu’une personne a voté ne permet pas de savoir ce qu’elle a voté. Le dépouillement exige la réunion de plusieurs clefs chiffrées, détenues par différents membres du bureau de vote. Aucune personne seule, y compris chez Mediavote, ne peut ouvrir l’urne.'
   },
   {
     q: 'Combien de temps faut-il pour organiser un scrutin ?',
@@ -19,11 +19,11 @@ const faqItems = [
   },
   {
     q: 'Le vote en ligne fait-il vraiment progresser la participation ?',
-    a: 'Il lève les obstacles matériels : déplacement, disponibilité sur un créneau précis, réception d’un courrier. Un vote ouvert sur plusieurs jours permet à chacun de participer quand il le peut. La progression dépend ensuite de votre organisation et de votre communication — nous vous accompagnons sur ce point, sans promettre un chiffre que nous ne maîtrisons pas.'
+    a: 'Il lève les obstacles matériels : déplacement, disponibilité sur un créneau précis, réception d’un courrier. Un vote ouvert sur plusieurs jours permet à chacun de participer quand il le peut. La progression dépend ensuite de votre organisation et de votre communication — nous vous accompagnons sur ce point.'
   },
   {
     q: 'Peut-on combiner vote en salle et vote à distance ?',
-    a: 'Oui. C’est le vote hybride : les votes exprimés sur place et à distance sont comptés ensemble, avec un quorum consolidé en temps réel et un résultat unique par vote. C’est la configuration la plus demandée aujourd’hui pour les assemblées générales.'
+    a: 'Oui. C’est le vote hybride, avec ProVote® : que les participants soient sur site ou à distance, le quorum et les votes sont consolidés en temps réel, avec un résultat unique par vote. C’est la configuration la plus demandée aujourd’hui pour les assemblées générales.'
   },
   {
     q: 'Combien coûte l’organisation d’un scrutin ?',
@@ -65,7 +65,7 @@ const body = `
     <div class="hero__cluster">
       <div class="slider inview" id="hero-slider" data-gated data-delay="325" data-slides='${C.esc(JSON.stringify([
         { brand: 'Assemblées générales', title: 'Quorum, pouvoirs, résolutions', cta: 'Voir la solution', url: '/solutions/vote-electronique-assemblee-generale/', icon: '<img src="/assets/img/provote-tablette-360.webp" alt="" width="56" height="56" loading="lazy" decoding="async">' },
-        { brand: 'Élections CSE', title: 'Dépouillement par clés chiffrées', cta: 'Voir la solution', url: '/solutions/elections-cse/', icon: '<img src="/assets/img/provote-mobile-360.webp" alt="" width="56" height="56" loading="lazy" decoding="async">' },
+        { brand: 'Élections CSE', title: 'Dépouillement par clefs chiffrées', cta: 'Voir la solution', url: '/solutions/elections-cse/', icon: '<img src="/assets/img/provote-mobile-360.webp" alt="" width="56" height="56" loading="lazy" decoding="async">' },
         { brand: 'Boîtiers de vote HF', title: 'Le vote en salle, sans Internet', cta: 'Découvrir les boîtiers', url: '/modes-de-vote/vote-par-boitier/', icon: '<img src="/assets/img/boitier-main-360.webp" alt="" width="56" height="56" loading="lazy" decoding="async">' }
       ]))}'>
         <div class="glass">
@@ -102,8 +102,8 @@ ${C.configurateur()}
 
 ${C.prodNote(`<p><strong>Configurateur — règles modifiables sans développement.</strong>
 Questions, réponses et recommandations sont décrites dans <code>src/data/configurateur.json</code>.
-Règles appliquées : CSE → ProVote® uniquement ; à distance → ProVote® ; hybride → ProVote®, boîtiers en
-alternative pour la salle (comme sur la maquette) ; présentiel → boîtiers ou ProVote®. À confirmer par Mediavote :
+Règles appliquées : CSE → ProVote® uniquement ; à distance → ProVote® ; hybride → ProVote® seul
+(Mediavote, recettage V02 : l’hybride se fait sur ProVote®, en salle et à distance) ; présentiel → boîtiers ou ProVote®. À confirmer par Mediavote :
 le <strong>nombre de votants</strong> et le <strong>type d’organisation</strong> ne modifient pas la recommandation,
 faute de règle fournie (question « le nombre de votants influence-t-il la recommandation ? » de <code>questions.pdf</code>).</p>
 <p>Bandeau de réassurance : « Données hébergées en France » reste retiré tant que l’hébergeur de ProVote®
@@ -123,16 +123,16 @@ n’est pas confirmé (Q-B5). Formulation de repli : « Développé en France »
         meta: 'Pour les associations, fédérations, mutuelles, sociétés et organismes publics.',
         link: '/solutions/vote-electronique-assemblee-generale/' },
       { title: 'Conseils d’administration',
-        text: 'Des votes rapides et à bulletin secret, en séance comme en consultation écrite, tout au long de l’année.',
+        text: 'Des votes sécurisés, anonymes ou nominatifs, en séance comme en consultation écrite, tout au long de l’année.',
         meta: 'Pour les instances qui se réunissent plusieurs fois par an.',
         link: '/solutions/vote-conseil-administration/' },
       { title: 'Élections CSE',
-        text: 'Protocole d’accord préélectoral, convocations, dépouillement par clés chiffrées, CERFA et second tour.',
+        text: 'Protocole d’accord préélectoral, convocations, dépouillement par clefs chiffrées, CERFA et second tour.',
         meta: 'Pour les employeurs d’au moins 11 salariés.',
         link: '/solutions/elections-cse/' },
       { title: 'Consultations et référendums',
-        text: 'Consulter salariés, adhérents ou administrés sans convoquer une assemblée générale.',
-        meta: 'Pour les décisions qui n’exigent pas la solennité d’une AG.',
+        text: 'Consulter salariés, adhérents ou administrés sans déplacement ou traitement de courrier papier.',
+        meta: 'Pour consulter, sonder, orienter les décisions.',
         link: '/solutions/consultations-referendums/' }
     ])}
     <p style="margin-top:var(--mv-space-8)"><a class="link-arrow" href="/solutions/">Voir toutes les solutions</a></p>
@@ -145,13 +145,13 @@ n’est pas confirmé (Q-B5). Formulation de repli : « Développé en France »
     ${C.sectionHead({
       eyebrow: 'Nos solutions',
       title: 'Deux solutions de vote, un même accompagnement',
-      lead: 'En ligne avec ProVote®, ou en salle avec nos boîtiers de vote : nous maîtrisons les deux depuis 1998, et nous vous disons laquelle convient à votre scrutin — ou pourquoi les deux se valent.'
+      lead: 'Mediavote vous accompagne sur ses deux solutions de vote : la solution digitale ProVote®, ou la solution boîtiers HF et émargement digital. ProVote® s’utilise aussi bien en présentiel qu’à distance ou en mode hybride ; la solution avec boîtiers de vote s’utilise en présentiel. Nous vous aidons à déterminer la solution la plus adaptée à votre besoin, votre contexte et votre budget.'
     })}
     ${C.solutionPair()}
     <div class="grid grid--3" style="margin-top:var(--mv-space-10)">
-      <p><strong>À distance&nbsp;?</strong> ProVote®&nbsp;: chacun vote depuis son ordinateur, sa tablette ou son smartphone, en séance ou sur plusieurs jours. <a class="link-arrow" href="/modes-de-vote/vote-en-ligne/">Le vote en ligne</a></p>
+      <p><strong>En salle, à distance ou en hybride&nbsp;?</strong> ProVote®&nbsp;: chacun vote depuis son ordinateur, sa tablette ou son smartphone, en séance ou sur plusieurs jours, qu’il soit sur place ou non. <a class="link-arrow" href="/modes-de-vote/vote-en-ligne/">Le vote en ligne</a></p>
       <p><strong>Tous en salle&nbsp;?</strong> Les boîtiers HF&nbsp;: un vote immédiat, sans dépendre du réseau ni des smartphones de vos participants. <a class="link-arrow" href="/modes-de-vote/vote-par-boitier/">Le vote par boîtier</a></p>
-      <p><strong>Les deux à la fois&nbsp;?</strong> Le vote hybride&nbsp;: les votes en salle et à distance sont comptés ensemble, avec un quorum consolidé en temps réel. <a class="link-arrow" href="/modes-de-vote/vote-hybride/">Le vote hybride</a></p>
+      <p><strong>Les deux à la fois&nbsp;?</strong> Le vote hybride avec ProVote®&nbsp;: les participants en salle et à distance votent sur la même plateforme, avec un quorum et des votes consolidés en temps réel. <a class="link-arrow" href="/modes-de-vote/vote-hybride/">Le vote hybride</a></p>
     </div>
     <p style="margin-top:var(--mv-space-8)"><a class="link-arrow" href="/modes-de-vote/#comparatif">Comparer ProVote® et les boîtiers de vote</a></p>
   </div>
@@ -226,9 +226,9 @@ n’est pas confirmé (Q-B5). Formulation de repli : « Développé en France »
           <li><strong>Quorum calculé automatiquement</strong>, affiché ou masqué selon votre choix</li>
           <li><strong>Pouvoirs et procurations</strong>, y compris la limitation du nombre de pouvoirs par votant et la délégation en cours de séance</li>
           <li><strong>Collèges et pondération des voix</strong>, quand vos statuts l’imposent</li>
-          <li><strong>Émargement électronique</strong>, avec signature, case à cocher ou signalement de sortie</li>
-          <li><strong>Accès Pilotage</strong> en lecture seule pour vos scrutateurs, votre huissier ou votre avocat</li>
-          <li><strong>Résultats et procès-verbaux</strong> exportables en PDF et en Excel</li>
+          <li><strong>Émargement électronique</strong>, avec signature, case à cocher</li>
+          <li><strong>Accès Pilotage</strong> en lecture seule pour vos scrutateurs, le bureau de vote, votre huissier ou votre avocat</li>
+          <li><strong>Résultats et procès-verbaux</strong> exportables à tout moment en PDF et en Excel</li>
         </ul>
         <div class="btn-group" style="margin-top:var(--mv-space-5)">
           <a class="link-arrow" href="/provote/fonctionnalites/">Voir toutes les fonctionnalités</a>
@@ -248,7 +248,7 @@ sur la version en production de ProVote® avant mise en ligne.</p>`)}
     ${C.sectionHead({
       eyebrow: 'Notre méthode',
       title: 'De la préparation aux résultats, vous savez toujours où vous en êtes',
-      lead: 'Un scrutin réussi se joue en amont. Voici comment nous procédons — et ce que nous attendons de vous à chaque étape.'
+      lead: 'Un scrutin réussi est un scrutin bien préparé en amont. Voici comment nous procédons — et ce que nous attendons de vous à chaque étape.'
     })}
     ${C.timeline([
       {
@@ -340,8 +340,8 @@ sur la version en production de ProVote® avant mise en ligne.</p>`)}
       ${C.card({
         icon: 'cles',
         variant: 'card--proof',
-        title: 'Clés de dépouillement fragmentées',
-        text: 'La clé de dépouillement est fragmentée et répartie entre plusieurs membres du bureau de vote. Aucun d’eux ne peut ouvrir l’urne seul : il faut réunir un nombre minimum de clés, que vous définissez.'
+        title: 'Clefs de dépouillement fragmentées',
+        text: 'La clef de dépouillement est fragmentée et répartie entre plusieurs membres du bureau de vote. Aucun d’eux ne peut ouvrir l’urne seul : il faut réunir un nombre minimum de clefs, que vous définissez.'
       })}
       ${C.card({
         icon: 'canaux',
@@ -362,7 +362,7 @@ sur la version en production de ProVote® avant mise en ligne.</p>`)}
 <section class="section section--tight" style="padding-top:0">
   <div class="container">
     <p class="cert-line">
-      <strong>Certification.</strong> ProVote® a obtenu en 2022 la certification NF Logiciel — Protection
+      <strong>Certification.</strong> ProVote® a obtenu la certification NF Logiciel — Protection
       des données personnelles (NF&nbsp;552) délivrée par AFNOR Certification.
       <a class="link-arrow" href="/securite-conformite/">Sécurité et conformité</a>
     </p>

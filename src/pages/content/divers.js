@@ -27,7 +27,7 @@ const hero = ({ eyebrow, h1, lead, cta, ctaUrl = '/demonstration/', narrow = tru
 /* -------------------------------------------------- /securite-conformite/ */
 const secuFaq = [
   { q: 'Comment le secret du vote est-il garanti ?', a: 'Par la séparation stricte de l’urne d’émargement et de l’urne des bulletins. Savoir qu’une personne a voté ne permet pas de savoir ce qu’elle a voté. Sur un vote nominatif, à l’inverse, le lien est conservé volontairement et figure dans l’export détaillé — vous choisissez vote par vote.' },
-  { q: 'Qui peut ouvrir l’urne ?', a: 'Personne seul. La clé de dépouillement est fragmentée et répartie entre plusieurs membres du bureau de vote. Il faut réunir un nombre minimum de fragments, que vous définissez, pour la reconstituer. Mediavote ne détient pas de clé permettant de dépouiller à votre place.' },
+  { q: 'Qui peut ouvrir l’urne ?', a: 'Personne seul. La clef de dépouillement est fragmentée et répartie entre plusieurs membres du bureau de vote. Il faut réunir un nombre minimum de fragments, que vous définissez, pour la reconstituer. Mediavote ne détient pas de clef permettant de dépouiller à votre place.' },
   { q: 'Comment les votants sont-ils authentifiés ?', a: 'Par des codes personnels envoyés sur deux canaux distincts, au choix : e-mail, SMS, courrier postal ou code remis en main propre. Vous pouvez combiner les canaux votant par votant. Un troisième canal peut être ajouté pour renforcer le dispositif.' },
   { q: 'Que contiennent les journaux d’audit ?', a: 'Les échecs et succès de connexion, les échecs d’accès à des ressources, les actions des administrateurs, les accès aux fonctions sensibles, les modifications de configuration, et les créations, suppressions et modifications de comptes et de droits. Chaque événement porte un identifiant d’utilisateur, une date et une heure. Les journaux n’enregistrent aucune donnée sensible.' },
   { q: 'Où sont hébergées les données ?', a: 'Cette information doit être précisée avec Mediavote avant publication. Nous ne publions pas d’affirmation d’hébergement sans confirmation écrite du nom de l’hébergeur et de la localisation des sites.' }
@@ -36,8 +36,8 @@ const secuFaq = [
 const securite = {
   page: {
     url: '/securite-conformite/', heroImage: 'hero-accueil',
-    title: 'Sécurité et conformité du vote électronique | Mediavote',
-    description: 'Séparation des urnes, clés de dépouillement fragmentées, authentification à deux canaux et journaux d’audit : comment nous protégeons vos scrutins.',
+    title: 'Sécurité et conformité de ProVote® CSE | Mediavote',
+    description: 'ProVote® CSE, pour vos élections professionnelles : séparation des urnes, clefs de dépouillement fragmentées, authentification à deux canaux, journaux d’audit.',
     priority: 'P0',
     schema: ['FAQPage', 'BreadcrumbList'],
     faqItems: secuFaq,
@@ -46,21 +46,31 @@ const securite = {
   body: `
 ${hero({
   img: 'hero-accueil',
-  eyebrow: 'Sécurité',
-  h1: 'Sécurité, confidentialité et conformité de vos scrutins',
-  lead: 'Le secret du vote et la sincérité du résultat ne se décrètent pas : ils reposent sur des mécanismes précis. Voici lesquels — et ce que vous pouvez vérifier vous-même en démonstration.',
+  eyebrow: 'Sécurité — ProVote® CSE',
+  h1: 'Sécurité, confidentialité et conformité de vos élections CSE',
+  lead: 'Le secret du vote et la sincérité du résultat ne se décrètent pas : ils reposent sur des mécanismes précis.',
   cta: 'Échanger avec un expert', ctaUrl: '/contact/'
 })}
 
+<section class="section section--tight">
+  <div class="container">
+    <p class="cert-line">
+      <strong>Périmètre.</strong> Cette page décrit ProVote® CSE, la solution Mediavote dédiée aux élections
+      professionnelles. Pour vos assemblées générales et vos conseils, découvrez
+      <a href="/provote/">la plateforme ProVote®</a> et <a href="/modes-de-vote/vote-par-boitier/">nos boîtiers de vote</a>.
+    </p>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
-    ${C.sectionHead({ eyebrow: 'Mécanismes', title: 'Quatre garanties, vérifiables en démonstration', lead: 'Nous préférons décrire des mécanismes plutôt qu’afficher des logos. Un mécanisme se constate ; un logo se croit.' })}
+    ${C.sectionHead({ eyebrow: 'Mécanismes', title: 'Quatre garanties, vérifiables en démonstration' })}
     <div class="grid grid--2">
       ${C.card({ icon: 'urnes', title: 'Séparation des urnes',
         text: 'L’urne d’émargement et l’urne des bulletins sont strictement séparées. Savoir qu’une personne a voté ne permet pas de savoir ce qu’elle a voté.',
         meta: 'Exigence de référentiel, appliquée par construction.' })}
-      ${C.card({ icon: 'cles', title: 'Clés de dépouillement fragmentées',
-        text: 'La clé générale est fragmentée et répartie entre les membres du bureau de vote. Il faut réunir un nombre minimum de fragments — que vous définissez — pour ouvrir l’urne.',
+      ${C.card({ icon: 'cles', title: 'Clefs de dépouillement fragmentées',
+        text: 'La clef générale est fragmentée et répartie entre les membres du bureau de vote. Il faut réunir un nombre minimum de fragments — que vous définissez — pour ouvrir l’urne.',
         meta: 'Ni l’organisateur, ni Mediavote ne peuvent dépouiller seuls.' })}
       ${C.card({ icon: 'canaux', title: 'Authentification à deux canaux',
         text: 'Les codes personnels sont transmis par deux canaux distincts au choix : e-mail, SMS, courrier ou code remis en main propre, combinables votant par votant.',
@@ -85,27 +95,23 @@ ${hero({
 
 <section class="section section--overlap">
   <div class="container">
-    ${C.sectionHead({ eyebrow: 'Certifications et conformité', title: 'Ce que nous pouvons attester, précisément', lead: 'Un référentiel a un périmètre et une date. Nous les indiquons, plutôt que d’afficher un logo qui en dirait plus qu’il ne prouve.' })}
+    ${C.sectionHead({ eyebrow: 'Référentiels', title: 'Certifications et conformité' })}
     <div class="grid grid--2">
       ${C.card({ icon: 'competence', variant: 'card--surface', title: 'AFNOR — NF 552',
-        text: 'ProVote® a obtenu en 2022 la certification NF Logiciel — Protection des données personnelles (NF&nbsp;552) délivrée par AFNOR Certification.',
+        text: 'ProVote® a obtenu la certification NF Logiciel — Protection des données personnelles (NF&nbsp;552) délivrée par AFNOR Certification.',
         meta: 'Ce référentiel porte sur la protection des données personnelles traitées par le logiciel.' })}
       ${C.card({ icon: 'urnes', variant: 'card--surface', title: 'RGPD',
         text: 'Le traitement des données de vos votants s’inscrit dans le cadre du RGPD. Hébergement, durées de conservation et coordonnées du délégué à la protection des données vous sont transmis lors de l’instruction de votre dossier.',
         meta: 'Les pièces de conformité à jour sont remises par votre chef de projet.' })}
     </div>
-    <p style="margin-top:var(--mv-space-8)">
-      Nous préférons aussi vous montrer, en démonstration, comment l’urne se sépare, comment les clés se
-      fragmentent, et ce que contient un journal d’audit. C’est vérifiable devant vous.
-    </p>
     <div class="btn-group" style="margin-top:var(--mv-space-8)">
       <a class="btn btn--xl btn--primary" href="/demonstration/">Voir les mécanismes en démonstration${C.icons.arrow}</a>
     </div>
   </div>
 </section>
 
-${C.prodNote(`<p><strong>Certifications — état au 27/09/2026.</strong></p>
-<p>— <strong>NF 552</strong> : mention validée par Alexis (arbitrage n° 1), datée « en 2022 », document non publié.
+${C.prodNote(`<p><strong>Certifications — état au 16/11/2026.</strong> Mediavote précise (recettage V02, diapositive 23) que l’ensemble de cette page ne concerne que ProVote® CSE, pas les AG.</p>
+<p>— <strong>NF 552</strong> : mention validée par Alexis (arbitrage n° 1) ; date « 2022 » retirée à la demande de Mediavote (recettage V02, 07/11/2026) ; document non publié.
 Le certificat n° 552/0003-1 était valable du 20/05/2022 au 20/05/2023 et porte sur « ProVote version 1 ».<br>
 — <strong>RGPD</strong> : formulation volontairement générale tant que l’hébergeur, la localisation, les durées
 et le DPO ne sont pas confirmés (Q-B5). Seule la mention « conforme au RGPD », validée le 27/09/2026 (arbitrage n° 9), est publiée.<br>
@@ -120,7 +126,7 @@ délibération n° 2026-045. Aucune référence publiée.<br>
     ${C.sectionHead({ eyebrow: 'Accessibilité', title: 'Rendre le vote possible pour tous vos votants', lead: 'Un scrutin qui exclut une partie de vos membres n’est pas un scrutin réussi.' })}
     <div class="grid grid--2">
       ${C.card({ title: 'Mode accompagné', text: 'Activable, il guide le votant pas à pas dans les actions qu’il doit effectuer. C’est ce qui permet à des publics peu à l’aise avec le numérique de voter seuls.' })}
-      ${C.card({ title: 'Mix papier et numérique', text: 'Convocations et bulletins peuvent partir par courrier pour une partie de vos votants. Les votes papier sont dépouillés puis consolidés automatiquement avec les votes numériques.' })}
+      ${C.card({ title: 'Mix papier et numérique', text: 'Convocations et bulletins peuvent être envoyés par courrier pour une partie de vos votants.' })}
     </div>
     <p style="margin-top:var(--mv-space-8)">
       L’accessibilité du site que vous consultez fait l’objet d’une <a href="/accessibilite/">déclaration dédiée</a>.
@@ -200,7 +206,7 @@ ${hero({
 });
 
 const associations = secteurPage({
-  groupe: 'professions',
+  groupe: ['associations', 'federations'],
   url: '/secteurs/associations-federations/', heroImage: 'hero-assemblee',
   img: 'hero-assemblee',
   eyebrow: 'Associations et fédérations',
@@ -240,7 +246,7 @@ const associations = secteurPage({
 });
 
 const entreprises = secteurPage({
-  groupe: 'entreprises',
+  groupe: ['entreprises', 'federations:mutuelles'],
   url: '/secteurs/entreprises-mutuelles/', heroImage: 'hero-accompagnement',
   img: 'hero-accompagnement',
   eyebrow: 'Entreprises et mutuelles',
@@ -254,7 +260,7 @@ const entreprises = secteurPage({
     { icon: 'competence', title: 'Une pondération fréquente', text: 'Parts sociales, nombre de sociétaires représentés, collèges à poids différents : dans les mutuelles et les sociétés, toutes les voix ne pèsent pas le même poids.' }
   ],
   scrutins: [
-    { title: 'Élections CSE', text: 'Protocole d’accord préélectoral, collèges, listes, dépouillement par clés chiffrées, CERFA et second tour.', meta: 'Obligatoire tous les quatre ans dès 11 salariés.', link: '/solutions/elections-cse/' },
+    { title: 'Élections CSE', text: 'Protocole d’accord préélectoral, collèges, listes, dépouillement par clefs chiffrées, CERFA et second tour.', meta: 'Obligatoire tous les quatre ans dès 11 salariés.', link: '/solutions/elections-cse/' },
     { title: 'Conseils d’administration', text: 'Délibérations en séance ou en consultation écrite, à bulletin secret ou nominatif.', meta: 'Plusieurs fois par an : la licence devient pertinente.', link: '/solutions/vote-conseil-administration/' },
     { title: 'Assemblées de sociétaires et d’actionnaires', text: 'Résolutions, quitus, renouvellement des instances, avec pondération des voix.', meta: 'Quorum et majorités renforcées.', link: '/solutions/vote-electronique-assemblee-generale/' },
     { title: 'Consultations et référendums d’entreprise', text: 'Ratification d’un accord, consultation sur un projet d’organisation.', meta: 'Anonymat garanti, résultat opposable.', link: '/solutions/consultations-referendums/' }
@@ -262,18 +268,18 @@ const entreprises = secteurPage({
   contraintes: [
     '**Collèges électoraux** — cadres, employés, agents de maîtrise : chaque collège a ses sièges et ses listes',
     '**Titulaires et suppléants** — les règles de délégation entre les deux sont paramétrées et appliquées',
-    '**Séparation stricte des rôles** — l’organisateur RH suit le scrutin mais ne peut pas dépouiller. Seul le bureau de vote détient les clés',
+    '**Séparation stricte des rôles** — l’organisateur RH suit le scrutin mais ne peut pas dépouiller. Seul le bureau de vote détient les clefs',
     '**Multi-sites et travail à distance** — un dispositif à distance évite d’organiser des bureaux de vote sur chaque site',
     '**Salariés sans e-mail professionnel** — courrier, SMS ou code remis en main propre restent combinables'
   ],
   besoin: {
     title: 'Un scrutin difficile à contester',
-    text: 'La contestation d’une élection professionnelle porte rarement sur le décompte : elle porte sur la procédure. Séparation des rôles, clés fragmentées entre les membres du bureau, journaux d’audit horodatés, CERFA pré-remplis sans ressaisie : chaque mécanisme ferme une voie de contestation. Et un chef de projet qui connaît le cadre vous alerte avant l’erreur, pas après.'
+    text: 'La contestation d’une élection professionnelle porte rarement sur le décompte : elle porte sur la procédure. Séparation des rôles, clefs fragmentées entre les membres du bureau, journaux d’audit horodatés, CERFA pré-remplis sans ressaisie : chaque mécanisme ferme une voie de contestation. Et un chef de projet qui connaît le cadre vous alerte avant l’erreur, pas après.'
   },
   offre: { url: '/solutions/elections-cse/', heroImage: 'hero-assemblee', label: 'Voir les élections CSE' },
   faq: [
     { q: 'Faut-il un accord pour recourir au vote électronique aux élections CSE ?', a: 'Le recours doit être prévu par un accord d’entreprise ou de groupe. À défaut d’accord, l’employeur peut y recourir par décision unilatérale. Votre chef de projet vérifie ce point avec vous et vous indique les mentions attendues.' },
-    { q: 'La direction peut-elle voir les résultats avant le bureau de vote ?', a: 'Non. L’organisateur — généralement le service RH — suit la participation et le quorum, mais ne détient aucune clé de dépouillement. Seuls les membres du bureau de vote peuvent ouvrir l’urne, et il leur faut réunir plusieurs clés.' },
+    { q: 'La direction peut-elle voir les résultats avant le bureau de vote ?', a: 'Non. L’organisateur — généralement le service RH — suit la participation et le quorum, mais ne détient aucune clef de dépouillement. Seuls les membres du bureau de vote peuvent ouvrir l’urne, et il leur faut réunir plusieurs clefs.' },
     { q: 'Comment gérer des salariés répartis sur plusieurs sites ?', a: 'C’est précisément l’intérêt du vote à distance : vos salariés votent depuis n’importe où, sans que vous ayez à organiser un bureau de vote physique sur chaque site. Le décompte est consolidé automatiquement.' },
     { q: 'Peut-on pondérer les voix en assemblée de sociétaires ?', a: 'Oui. Le poids de chaque votant — parts sociales, nombre de sociétaires représentés, appartenance à un collège — est intégré au paramétrage et appliqué automatiquement au calcul des résultats.' }
   ]
@@ -295,7 +301,7 @@ const publics = secteurPage({
   ],
   scrutins: [
     { title: 'Instances délibératives', text: 'Conseils d’administration d’établissements, comités, commissions permanentes : délibérations en séance ou à distance.', meta: 'Quorum, pouvoirs, majorités paramétrables.', link: '/solutions/vote-conseil-administration/' },
-    { title: 'Élections de représentants', text: 'Représentants du personnel, représentants d’usagers, membres de commissions : scrutins uninominaux, de liste ou par collèges.', meta: 'Dépouillement par clés fragmentées.', link: '/solutions/elections-cse/' },
+    { title: 'Élections de représentants', text: 'Représentants du personnel, représentants d’usagers, membres de commissions : scrutins uninominaux, de liste ou par collèges.', meta: 'Dépouillement par clefs fragmentées.', link: '/solutions/elections-cse/' },
     { title: 'Assemblées générales et plénières', text: 'Séances plénières avec émargement, quorum et vote de délibérations.', meta: 'En présentiel, à distance ou en hybride.', link: '/solutions/vote-electronique-assemblee-generale/' },
     { title: 'Consultations d’usagers', text: 'Concertation locale, avis sur un projet, consultation des bénéficiaires d’un service.', meta: 'Anonymat et traçabilité garantis.', link: '/solutions/consultations-referendums/' }
   ],
@@ -353,7 +359,7 @@ ${hero({
   img: 'hero-accompagnement',
   eyebrow: 'Qui sommes-nous',
   h1: 'Mediavote, spécialiste du vote professionnel depuis 1998',
-  lead: 'Nous organisons des scrutins. C’est notre seul métier depuis plus d’un quart de siècle — en salle avec nos boîtiers, en ligne avec ProVote®, et le plus souvent avec une équipe qui connaît vos statuts.',
+  lead: 'Nous organisons des scrutins. C’est notre métier depuis plus d’un quart de siècle — en salle avec nos boîtiers, en ligne (à distance, en salle ou en hybride) avec ProVote®. La plupart de nos clients sont récurrents : notre équipe connaît leurs statuts.',
   cta: 'Parler de votre projet', ctaUrl: '/contact/'
 })}
 
@@ -369,14 +375,16 @@ ${hero({
           sans abandonner le présentiel — parce que nos clients avaient besoin des deux.
         </p>
         <p style="margin-top:var(--mv-space-5)">
-          Ce qui n’a pas changé, c’est l’exigence de <strong>qualité et de fiabilité</strong>, et la conviction
-          qui structure notre façon de travailler&nbsp;: <strong>un scrutin ne se joue pas le jour du vote, il se
-          joue à la préparation</strong>. Les incidents que nous voyons chez les organisations qui nous rejoignent
-          viennent presque toujours d’un paramétrage fait trop vite, jamais testé.
+          Ce qui demeure inchangé, c’est notre exigence de <strong>qualité et de fiabilité</strong>, ainsi que
+          notre conviction profonde que la réussite repose avant tout sur une préparation rigoureuse. Une
+          philosophie que résume cette maxime attribuée à Alexander Graham Bell&nbsp;: «&nbsp;<em>Avant toute
+          autre chose, la préparation est la clef du succès.</em>&nbsp;»
         </p>
         <p style="margin-top:var(--mv-space-5)">
-          C’est pourquoi nous imposons un test en conditions réelles avant chaque scrutin accompagné,
-          y compris quand le client trouve que ce n’est pas nécessaire.
+          C’est la raison pour laquelle la simulation et les tests en conditions réelles constituent une
+          étape clef de notre processus d’accompagnement, en amont de chaque scrutin. Cette phase de
+          préparation est incontournable pour anticiper les éventuelles difficultés et garantir le bon
+          déroulement des opérations de vote.
         </p>
       </div>
       <div>
@@ -396,7 +404,7 @@ ${hero({
 
 <section class="section section--surface">
   <div class="container">
-    ${C.sectionHead({ eyebrow: 'L’équipe', title: 'Vous saurez à qui vous parlez', lead: 'Une équipe à taille humaine, joignable, et présente le jour où cela compte.' })}
+    ${C.sectionHead({ eyebrow: 'L’équipe de direction', title: 'Analyser, estimer et piloter votre projet', lead: 'Une équipe à taille humaine, joignable, à votre écoute.' })}
     <div class="team">
       ${person({
         slug: 'fanny-damon', nom: 'Fanny Damon', role: 'Responsable des opérations',
@@ -480,15 +488,15 @@ const faqAll = [
     { q: 'Les procès-verbaux sont-ils opposables ?', a: 'Les documents produits — procès-verbal des résultats, rapport d’émargement, export détaillé — constituent la trace de votre scrutin. En cas de contestation, ils permettent d’établir qui a voté, quand, et selon quelles règles le résultat a été calculé, sans jamais révéler le sens d’un vote secret.' }
   ]},
   { t: 'Sécurité et anonymat', items: [
-    { q: 'Comment garantissez-vous le secret du vote ?', a: 'L’urne d’émargement et l’urne des bulletins sont séparées : savoir qu’une personne a voté ne permet pas de savoir ce qu’elle a voté. Le dépouillement exige la réunion de plusieurs clés chiffrées détenues par différents membres du bureau de vote. Aucune personne seule, y compris chez Mediavote, ne peut ouvrir l’urne.' },
+    { q: 'Comment garantissez-vous le secret du vote ?', a: 'L’urne d’émargement et l’urne des bulletins sont séparées : savoir qu’une personne a voté ne permet pas de savoir ce qu’elle a voté. Le dépouillement exige la réunion de plusieurs clefs chiffrées détenues par différents membres du bureau de vote. Aucune personne seule, y compris chez Mediavote, ne peut ouvrir l’urne.' },
     { q: 'Comment les votants sont-ils authentifiés ?', a: 'Par des codes personnels transmis sur deux canaux distincts au choix : e-mail, SMS, courrier postal ou code remis en main propre. Vous pouvez combiner les canaux votant par votant, ce qui permet d’adapter le dispositif à un public hétérogène.' },
     { q: 'Peut-on voter deux fois ?', a: 'Non. Chaque votant dispose d’un accès unique. Si vous activez l’option correspondante, il peut en revanche modifier son vote tant que le scrutin reste ouvert — seul le dernier vote est alors pris en compte.' }
   ]},
   { t: 'Organisation pratique', items: [
     { q: 'Combien de temps faut-il pour organiser un scrutin ?', a: 'Un mois permet de travailler dans de bonnes conditions : paramétrage, test en situation réelle et ajustements. Nous savons aussi organiser un scrutin dans des délais plus courts — dites-nous votre échéance, nous vous dirons ce qui est réalisable.' },
     { q: 'Que se passe-t-il si un votant n’arrive pas à voter ?', a: 'Une assistance technique est disponible pendant toute la durée du scrutin, par téléphone et par e-mail. Elle explique comment se connecter et comment voter, et régénère des codes d’accès si le votant a perdu les siens. Un mode accompagné, activable, guide également le votant pas à pas.' },
-    { q: 'Peut-on combiner vote en salle et vote à distance ?', a: 'Oui, c’est le vote hybride : les votes exprimés sur place et à distance sont comptés ensemble, avec un quorum consolidé en temps réel et un résultat unique par vote. C’est la configuration la plus demandée aujourd’hui pour les assemblées générales.' },
-    { q: 'Le vote en ligne améliore-t-il la participation ?', a: 'Il lève les obstacles matériels : déplacement, créneau imposé, courrier reçu trop tard. Un scrutin ouvert sur plusieurs jours permet à chacun de voter quand il le peut. La progression dépend ensuite de votre communication — nous vous conseillons sur les rappels à programmer, sans promettre un chiffre que nous ne maîtrisons pas.' }
+    { q: 'Peut-on combiner vote en salle et vote à distance ?', a: 'Oui. C’est le vote hybride, avec ProVote® : que les participants soient sur site ou à distance, le quorum et les votes sont consolidés en temps réel, avec un résultat unique par vote. C’est la configuration la plus demandée aujourd’hui pour les assemblées générales.' },
+    { q: 'Le vote en ligne améliore-t-il la participation ?', a: 'Il lève les obstacles matériels : déplacement, créneau imposé, courrier reçu trop tard. Un scrutin ouvert sur plusieurs jours permet à chacun de voter quand il le peut. La progression dépend ensuite de votre communication — nous vous conseillons sur les rappels à programmer.' }
   ]},
   { t: 'Fonctionnalités', items: [
     { q: 'Comment le quorum est-il calculé ?', a: 'Automatiquement, à mesure que vos membres émargent, en nombre de suffrages ou en pourcentage selon votre règle statutaire. Il est consultable en temps réel depuis l’accès Pilotage et peut être affiché ou masqué aux participants. Si votre séance comporte une AGO et une AGE, chacune dispose de son propre quorum.' },
@@ -747,14 +755,14 @@ ${hero({
 
 <section class="section">
   <div class="container">
-    ${C.sectionHead({ eyebrow: 'Ils nous font confiance', title: 'Des organisations de toutes tailles, dans tous les secteurs', lead: 'Entreprises, services de l’État, chambres consulaires, organisations professionnelles, acteurs de la santé et du sport&nbsp;: une sélection des organisations qui votent avec Mediavote.', center: true })}
+    ${C.sectionHead({ eyebrow: 'Ils nous font confiance', title: 'Des organisations de toutes tailles, dans tous les secteurs', lead: 'Organismes publics, sociétés privées, fédérations, syndicats, mutuelles, associations, coopératives et ONG&nbsp;: les organisations qui votent avec Mediavote.', center: true })}
     ${C.logoWall()}
   </div>
 </section>
 
 ${C.prodNote(`<p><strong>Logos publiés sur décision d’Alexis Rollemberg (27/09/2026, arbitrage n° 5).</strong>
-Logos fournis dans <code>03_logos-clients/Licence ProVote</code>, classés en quatre familles dans
-<code>src/data/references.js</code>. Témoignages nominatifs toujours attendus (Q-B7) : aucune citation n’est fabriquée.</p>`)}
+Dossier complet remis par Mediavote le 12/11/2026 (quatre catégories, recettage V02), classé dans
+<code>src/data/references.js</code> ; les 21 logos initiaux sont conservés ici et repris sur la page Licence. Témoignages nominatifs toujours attendus (Q-B7) : aucune citation n’est fabriquée.</p>`)}
 
 <section class="section section--surface">
   <div class="container">

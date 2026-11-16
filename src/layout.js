@@ -101,9 +101,9 @@ const TRUST = {
   '/solutions/consultations-referendums/': 'Vote en ligne et RGPD : ProVote® privilégie la confidentialité, l’intégrité et la protection des données des électeurs.',
   '/solutions/': 'Mediavote place la sécurité des élections en ligne au premier plan, avec ProVote®, logiciel ayant obtenu la certification NF552 – Protection des données personnelles.',
   '/modes-de-vote/vote-en-ligne/': 'Vote électronique sécurisé : ProVote® intègre la protection des données personnelles au cœur de sa conception.',
-  '/modes-de-vote/vote-hybride/': 'ProVote® s’appuie sur une démarche de sécurité et de protection des données personnelles, reconnue par la certification NF552 obtenue en 2022.',
+  '/modes-de-vote/vote-hybride/': 'ProVote® s’appuie sur une démarche de sécurité et de protection des données personnelles, reconnue par la certification NF552.',
   '/modes-de-vote/': 'ProVote® : une solution française de vote électronique conçue pour répondre aux exigences de sécurité et de confidentialité des organisations.',
-  '/provote/': 'La certification NF552 obtenue par ProVote® en 2022 témoigne de l’engagement de Mediavote en faveur de la protection des données personnelles.',
+  '/provote/': 'La certification NF552 obtenue par ProVote® témoigne de l’engagement de Mediavote en faveur de la protection des données personnelles.',
   '/provote/fonctionnalites/': 'La protection des données dès la conception (Privacy by Design) fait partie des principes évalués par le référentiel NF552, au titre duquel ProVote® version 1 a obtenu sa certification.',
   '/offres/licence-annuelle-provote/': 'ProVote® : une solution française de vote électronique conçue pour répondre aux exigences de sécurité et de confidentialité des organisations.',
   '/offres/accompagnement-sur-mesure/': 'Mediavote place la sécurité des élections en ligne au premier plan, avec ProVote®, logiciel ayant obtenu la certification NF552 – Protection des données personnelles.',
@@ -113,7 +113,7 @@ const TRUST = {
   '/secteurs/entreprises-mutuelles/': 'Sécurisez vos assemblées générales et élections professionnelles avec ProVote®, solution de vote en ligne développée dans une démarche de conformité au RGPD.',
   '/secteurs/organismes-publics/': 'ProVote® : une solution française de vote électronique conçue pour répondre aux exigences de sécurité et de confidentialité des organisations.',
   '/a-propos/': 'Avec ProVote®, Mediavote associe sécurité du vote électronique, confidentialité des scrutins et respect des exigences du RGPD.',
-  '/references/': 'La certification NF552 obtenue par ProVote® en 2022 témoigne de l’engagement de Mediavote en faveur de la protection des données personnelles.',
+  '/references/': 'La certification NF552 obtenue par ProVote® témoigne de l’engagement de Mediavote en faveur de la protection des données personnelles.',
   '/faq/': 'Vote en ligne et RGPD : ProVote® privilégie la confidentialité, l’intégrité et la protection des données des électeurs.',
   '/contact/': 'Vote électronique sécurisé : ProVote® intègre la protection des données personnelles au cœur de sa conception.'
 };

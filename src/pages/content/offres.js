@@ -67,7 +67,7 @@ ${hero({
     <div class="grid grid--4">
       ${C.card({ icon: 'enLigne', title: 'Rien à installer', text: 'Une application web. Vos votants ouvrent un lien, depuis le terminal qu’ils ont sous la main. Aucune mise à jour à leur charge.' })}
       ${C.card({ icon: 'competence', title: 'Vos règles, pas un modèle', text: 'Quorum, pouvoirs, collèges, majorités, pondération : ce sont des paramètres. Votre chef de projet les règle à partir de vos textes.' })}
-      ${C.card({ icon: 'urnes', title: 'Le secret par construction', text: 'Urne d’émargement et urne des bulletins séparées, clés de dépouillement fragmentées, journaux d’audit horodatés.' })}
+      ${C.card({ icon: 'urnes', title: 'Le secret par construction', text: 'Urne d’émargement et urne des bulletins séparées, clefs de dépouillement fragmentées, journaux d’audit horodatés.' })}
       ${C.card({ icon: 'journaux', title: 'Des documents opposables', text: 'Procès-verbaux et rapports d’émargement en PDF et en Excel. La trace de votre scrutin, disponible immédiatement.' })}
     </div>
   </div>
@@ -160,6 +160,17 @@ ${C.prodNote(`<p><strong>Vérification fonctionnelle requise avant publication (
 L’ensemble de cette page provient des plaquettes AG et CSE, qui datent. Chaque fonctionnalité doit
 être vérifiée en démonstration sur la version en production de ProVote®.</p>`)}
 
+<section class="section section--surface">
+  <div class="container container--narrow">
+    ${C.sectionHead({ eyebrow: 'Convocations', title: 'Des convocations individuelles, envoyées automatiquement' })}
+    <ul style="font-size:var(--mv-text-lg);line-height:1.8">
+      <li>Envoi automatisé des convocations individuelles et personnalisées</li>
+      <li>Génération d’un mot de passe sécurisé pour chaque participant</li>
+      <li>Accès simplifié à la plateforme grâce à un lien de connexion intégrant automatiquement les identifiants d’authentification</li>
+    </ul>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     ${C.sectionHead({ eyebrow: 'Votes', title: 'Résolutions et motions' })}
@@ -242,14 +253,14 @@ L’ensemble de cette page provient des plaquettes AG et CSE, qui datent. Chaque
 
 <section class="section">
   <div class="container">
-    ${C.sectionHead({ eyebrow: 'Documents et restitution', title: 'Ce que vous récupérez' })}
+    ${C.sectionHead({ eyebrow: 'Documents et restitution', title: 'Documents mis à disposition' })}
     <div class="grid grid--3">
       ${C.card({ icon: 'journaux', title: 'Procès-verbaux', text: 'Le PV des résultats en PDF, disponible dès la clôture de la séance.' })}
       ${C.card({ icon: 'consultation', title: 'Export détaillé', text: 'Un fichier Excel avec un onglet par nature de résultat : résultats globaux, votes nominatifs et votes anonymes présentés séparément.' })}
       ${C.card({ icon: 'cse', title: 'Espace documents', text: 'Un espace de stockage où vos participants consultent à tout moment les pièces associées à la séance — tous formats acceptés.' })}
     </div>
     <p style="margin-top:var(--mv-space-8)">
-      Mediavote peut développer des besoins spécifiques qui ne figurent pas dans cette liste.
+      Mediavote peut développer des fonctionnalités spécifiques pour répondre à des besoins spécifiques.
       <a href="/contact/">Décrivez-nous votre cas</a>.
     </p>
   </div>
@@ -263,7 +274,7 @@ const licenceFaq = [
   { q: 'Faut-il des compétences techniques pour piloter la plateforme ?', a: 'Non. ProVote® est conçu pour être utilisé par un secrétariat ou un service administratif, sans compétence informatique particulière. La formation initiale de vos équipes est prévue dans le dispositif.' },
   { q: 'Que se passe-t-il si nous bloquons sur un paramétrage ?', a: 'L’assistance technique Mediavote reste disponible pendant toute la durée de la licence. Sur un scrutin particulièrement sensible, vous pouvez aussi demander ponctuellement l’accompagnement d’un chef de projet.' },
   { q: 'Combien d’utilisateurs peuvent être formés ?', a: 'La formation couvre plusieurs utilisateurs par session, ce qui permet de ne pas dépendre d’une seule personne dans votre organisation. Le nombre exact et les modalités sont précisés lors de l’échange.' },
-  { q: 'Quels sont les tarifs ?', a: 'Ils dépendent du nombre de votants et du niveau retenu. Nous ne les publions pas parce qu’ils se construisent avec vous, à partir de votre volumétrie réelle et de votre fréquence de scrutins. Demandez une démonstration : vous repartez avec une proposition chiffrée.' }
+  { q: 'Quels sont les tarifs ?', a: 'Ils sont affichés sur cette page : de 50 à 790 € HT par mois selon le nombre de votants et le pack retenu, et sur devis au-delà de 1 000 votants. La formation initiale — formation en ligne, support de formation et compte administrateur de formation — est facturée 820 € HT, une seule fois.' }
 ];
 
 const licence = {
@@ -292,7 +303,6 @@ ${hero({
     <ul style="font-size:var(--mv-text-lg);line-height:1.8">
       <li>Vous tenez <strong>plus de quatre assemblées générales</strong> par an</li>
       <li>Vous réunissez <strong>plus de huit conseils d’administration</strong> par an</li>
-      <li>Vous comptez <strong>plus de deux cents votants</strong></li>
       <li>Vos votants sont répartis sur <strong>plusieurs sites géographiques</strong></li>
       <li>Vous souhaitez <strong>rationaliser le budget</strong> de vos réunions plénières</li>
     </ul>
@@ -310,16 +320,14 @@ ${hero({
     <div class="grid grid--4">
       ${C.card({ icon: 'consultation', title: 'Sessions de vote illimitées', text: 'Organisez autant de scrutins que nécessaire dans l’année, sans repasser par une prestation à chaque fois.' })}
       ${C.card({ icon: 'competence', title: 'Compte administrateur', text: 'Vous créez et paramétrez vos sessions vous-même, depuis une interface conçue pour un usage administratif, sans compétence technique.' })}
-      ${C.card({ icon: 'assemblee', title: 'Formation de vos équipes', text: 'Vos utilisateurs sont formés au démarrage, pour que votre organisation ne dépende pas d’une seule personne.' })}
+      ${C.card({ icon: 'assemblee', title: 'Formation de vos équipes', text: 'Vos utilisateurs sont formés au démarrage, en ligne, pour que votre organisation ne dépende pas d’une seule personne. Coût unique de 820 € HT.' })}
       ${C.card({ icon: 'canaux', title: 'Assistance technique', text: 'L’équipe Mediavote reste joignable pendant toute la durée de la licence, pour vos questions de paramétrage comme pour vos scrutins.' })}
     </div>
   </div>
 </section>
 
-${C.prodNote(`<p><strong>Formation : incluse ou facturée ? (Q-B9, réf. V6.5).</strong>
-La fiche commerciale annonce la formation comme un élément inclus, puis mentionne un coût unique en
-bas de grille tarifaire. La plaquette AG parle de 1,5 jour, le site actuel de 4 heures.
-Formulation prudente retenue ci-dessus. À trancher avant publication.</p>`)}
+${C.prodNote(`<p><strong>Formation et tarifs (Q-B9) — tranchés par Mediavote le 07/11/2026 (recettage V02, diapositive 14).</strong>
+Grille tarifaire publiée telle que fournie ; formation en ligne / support / compte administrateur de formation : 820 € HT, coût unique.</p>`)}
 
 <section class="section section--overlap">
   <div class="container">
@@ -327,7 +335,7 @@ Formulation prudente retenue ci-dessus. À trancher avant publication.</p>`)}
     <div class="table-scroll" tabindex="0" role="region" aria-label="Comparatif des trois niveaux de licence">
       <table>
         <caption class="visually-hidden">Fonctionnalités incluses selon le niveau de licence</caption>
-        <thead><tr><th scope="col">Fonctionnalité</th><th scope="col">Essentielle</th><th scope="col">Avancée</th><th scope="col">Premium</th></tr></thead>
+        <thead><tr><th scope="col">Fonctionnalité</th><th scope="col">Pack L-Essentielle</th><th scope="col">Pack L-Avancée</th><th scope="col">Pack L-Premium</th></tr></thead>
         <tbody>
           <tr><th scope="row">Vote sur résolutions</th><td>Inclus</td><td>Inclus</td><td>Inclus</td></tr>
           <tr><th scope="row">Élections</th><td>Inclus</td><td>Inclus</td><td>Inclus</td></tr>
@@ -338,11 +346,22 @@ Formulation prudente retenue ci-dessus. À trancher avant publication.</p>`)}
         </tbody>
       </table>
     </div>
-    <p style="margin-top:var(--mv-space-6)">
-      <strong>Nous ne publions pas nos tarifs.</strong> Ils dépendent de votre volumétrie de votants
-      et du niveau retenu, et se construisent lors de l’échange. Vous repartez de la démonstration
-      avec une proposition chiffrée.
-    </p>
+    <h3 style="margin-top:var(--mv-space-12)">Tarifs de la licence annuelle</h3>
+    <div class="table-scroll pricing" tabindex="0" role="region" aria-label="Tarifs mensuels de la licence annuelle ProVote® selon le nombre de votants et le pack">
+      <table class="pricing__table">
+        <caption class="visually-hidden">Tarif mensuel hors taxes selon le nombre de votants et le pack</caption>
+        <thead><tr><th scope="col">Nombre de votants</th><th scope="col">Pack L-Essentielle</th><th scope="col">Pack L-Avancée</th><th scope="col">Pack L-Premium</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Moins de 50</th><td>50&nbsp;€<small>/mois</small></td><td>90&nbsp;€<small>/mois</small></td><td>100&nbsp;€<small>/mois</small></td></tr>
+          <tr><th scope="row">Moins de 100</th><td>80&nbsp;€<small>/mois</small></td><td>150&nbsp;€<small>/mois</small></td><td>180&nbsp;€<small>/mois</small></td></tr>
+          <tr><th scope="row">Moins de 200</th><td>140&nbsp;€<small>/mois</small></td><td>260&nbsp;€<small>/mois</small></td><td>320&nbsp;€<small>/mois</small></td></tr>
+          <tr><th scope="row">Moins de 500</th><td>250&nbsp;€<small>/mois</small></td><td>450&nbsp;€<small>/mois</small></td><td>500&nbsp;€<small>/mois</small></td></tr>
+          <tr><th scope="row">Moins de 1&nbsp;000</th><td>390&nbsp;€<small>/mois</small></td><td>690&nbsp;€<small>/mois</small></td><td>790&nbsp;€<small>/mois</small></td></tr>
+          <tr><th scope="row">Plus de 1&nbsp;000</th><td>Sur devis</td><td>Sur devis</td><td>Sur devis</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pricing__note">Prix affichés en € HT. Engagement de 12 mois consécutifs&nbsp;: la licence annuelle est valable 365 jours consécutifs, à compter de la date d’ouverture du compte administrateur. Formation en ligne, support de formation et compte administrateur de formation&nbsp;: 820&nbsp;€ HT, coût unique.</p>
   </div>
 </section>
 
@@ -369,12 +388,19 @@ Formulation prudente retenue ci-dessus. À trancher avant publication.</p>`)}
     <div class="split">
       <div>
         <span class="eyebrow">L’autre voie vers l’autonomie</span>
-        <h2 style="margin-top:var(--mv-space-4)">Vous votez en salle&nbsp;? Acquérez vos boîtiers de vote</h2>
+        <h2 style="margin-top:var(--mv-space-4)">Vous votez en salle&nbsp;? Faites l’acquisition de boîtiers de vote</h2>
         <p class="lead" style="margin-top:var(--mv-space-5)">La licence rend autonome sur ProVote®. Pour les votes en présentiel, Mediavote propose l’achat de boîtiers de vote avec récepteurs, logiciel et formation-action de 3&nbsp;h&nbsp;30.</p>
         <div class="btn-group" style="margin-top:var(--mv-space-8)"><a class="btn btn--xl btn--primary" href="/offres/achat-boitiers-de-vote/">L’achat de boîtiers de vote${C.icons.arrow}</a></div>
       </div>
       <figure class="product-shot">${C.picture('emargement-boitier-tablette', { alt: 'Remise d’un boîtier de vote à un participant qui signe la feuille d’émargement sur tablette', sizes: '(min-width: 1024px) 40vw, 90vw' })}</figure>
     </div>
+  </div>
+</section>
+
+<section class="section section--surface">
+  <div class="container">
+    ${C.sectionHead({ eyebrow: 'Ils ont choisi la licence', title: 'Des organisations autonomes sur ProVote®', center: true })}
+    ${C.logoWall({ licence: true })}
   </div>
 </section>
 

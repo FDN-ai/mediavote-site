@@ -362,15 +362,15 @@
       "message": "Vos votants ne sont pas réunis : chacun vote depuis son ordinateur, sa tablette ou son smartphone."
     },
     {
-      "nom": "Hybride : ProVote®, boîtiers possibles pour la salle",
+      "nom": "Hybride : ProVote®",
       "si": {
         "mode": [
           "hybride"
         ]
       },
       "principale": "provote",
-      "alternative": "boitier",
-      "message": "ProVote® réunit dans un même scrutin les votants présents en salle et ceux qui votent à distance, avec un quorum et un résultat uniques. En salle, les boîtiers de vote peuvent compléter le dispositif."
+      "alternative": null,
+      "message": "Vos participants sont en salle et à distance : ProVote® les réunit dans un même scrutin, chacun votant depuis son ordinateur, sa tablette ou son smartphone, avec un quorum et un résultat uniques."
     },
     {
       "nom": "Présentiel : boîtiers HF, ou ProVote®",

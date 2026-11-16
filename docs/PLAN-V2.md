@@ -502,3 +502,26 @@ serveur ; page `/merci/` après envoi. Détail et correspondance des champs : `d
 | Mise en production | Procédure `docs/MISE-EN-LIGNE.md` : DNS + fichier `public/CNAME`, le workflow bascule seul en mode production |
 | Reste à faire par Mediavote/Alexis | Inviter `rockandberg` comme collaborateur du dépôt (Settings → Collaborators) pour les corrections depuis ce poste ; supprimer les aperçus `rockandberg` quand ils ne servent plus |
 
+---
+
+## 13. Recettage V02 de Mediavote (07/11/2026) — appliqué le 16/11/2026
+
+Source : `01_website/05_debrief_mediavote/03/` (PowerPoint « ppt_V02_Recettage site Mediavote », 33 diapositives
+analysées texte + annotations rouges ; PDF « AG — Émargement digital » ; brief ; dossier de 126 logos).
+
+| Page | Intervention |
+|---|---|
+| Accueil | CA : « votes sécurisés, anonymes ou nominatifs » · Consultations : « sans déplacement ou traitement de courrier papier » / « Pour consulter, sonder, orienter les décisions » · texte « Nos solutions » remplacé par celui de Mediavote · trois colonnes et FAQ : ProVote® en salle, à distance ou en hybride, l’hybride se fait sur ProVote® (plus de boîtiers + ProVote®) · « signalement de sortie » retiré · Accès Pilotage « le bureau de vote » ajouté · PV « exportables à tout moment » · « Un scrutin réussi est un scrutin bien préparé en amont » · « en 2022 » retiré · « sans promettre un chiffre… » retiré |
+| AG | Bloc « Nos deux solutions » (titre, chapô, cartes) · CTA final « Testez votre assemblée générale en amont de votre plénière » + texte Mediavote · FAQ hybride |
+| Licence | Grille tarifaire publiée (3 packs × 6 paliers, mentions engagement/formation 820 € HT) · FAQ tarifs · critère « plus de deux cents votants » retiré · « Faites l’acquisition de boîtiers de vote » · mur des 21 logos « Ils ont choisi la licence » |
+| Références | 117 logos en 4 catégories (organismes publics 39, sociétés privées 25, fédérations/syndicats/mutuelles 31, associations/coopératives/ONG 22), les 21 logos initiaux conservés · « en 2022 » retiré · panneaux des pages secteurs recalés sur les nouvelles catégories (12 logos, ceux de l’accueil d’abord) |
+| À propos | Chapô, deux paragraphes « Ce qui n’a pas changé » (maxime Graham Bell), en-tête équipe « L’équipe de direction / Analyser, estimer et piloter votre projet / à votre écoute » |
+| Sécurité | Page recadrée sur ProVote® CSE (titre, H1, chapô, bandeau de périmètre, méta) · chapôs « démonstration » et « logos » retirés · titre de section « Certifications et conformité » · « en 2022 » retiré · paragraphe « urne / clefs / journal » retiré · « être envoyés par courrier », phrase sur les votes papier retirée |
+| Fonctionnalités | Bloc « Convocations » (3 points) avant « Résolutions et motions » · « Documents mis à disposition » · phrase sur les développements spécifiques |
+| Vote par boîtier | Section « Émargement digital » (contenu du PDF, photo boîtier + tablette) · bloc hybride renvoyé vers ProVote® |
+| Vote en ligne | « Deux modes de vote, selon votre séance : synchrone / asynchrone » |
+| Vote hybride, hub Modes, configurateur | Hybride = ProVote® pour tous (en salle comme à distance) ; la règle « hybride » du configurateur ne propose plus les boîtiers en alternative ; comparatif du hub recalé ; test QA mis à jour |
+| Global | « clef » au lieu de « clé » dans tous les textes (URL de l’article « étapes-clés » conservée) |
+
+Points à confirmer par Mediavote : logo `LH` (nom non identifié, libellé « LH ») ; accolade rouge sans texte sur les deux premiers points de Fanny Damon (diapositive 19) — rien modifié ; « ou signalement de sortie » retiré sur l’accueil (souligné sans consigne) mais conservé dans la liste détaillée des fonctionnalités ; la citation de Graham Bell est écrite « clef » conformément à la consigne « clef partout ». Calendrier annoncé par Mediavote : relecture finale sous quinze jours, mise en ligne vers le 15/12/2026.
+

@@ -143,7 +143,26 @@ def portrait(src, name):
     print(f'  {name:32} {PORTRAIT_SIZE}×{PORTRAIT_SIZE}   webp {kb(webp)} Ko')
 
 
+def logos_only():
+    """`python3 tools/visuels.py --logos` : ne ré-encode que les logos clients."""
+    import json
+    os.makedirs(os.path.join(OUT, 'logos'), exist_ok=True)
+    print('\n\033[1mLogos clients\033[0m\n')
+    dims = {}
+    for f in sorted(os.listdir(os.path.join(SRC, 'logos'))):
+        if f.startswith('.'):
+            continue
+        name = os.path.splitext(f)[0]
+        d = logo(os.path.join(SRC, 'logos', f), name)
+        dims[name] = [d['w'], d['h']]
+    with open(os.path.join(ROOT, 'src', 'data', 'logos-dimensions.json'), 'w') as fh:
+        json.dump(dims, fh, indent=2, sort_keys=True)
+    print(f'\n  {len(dims)} logos · dimensions écrites dans src/data/logos-dimensions.json\n')
+
+
 def main():
+    if '--logos' in sys.argv:
+        return logos_only()
     os.makedirs(os.path.join(OUT, 'logos'), exist_ok=True)
 
     import json

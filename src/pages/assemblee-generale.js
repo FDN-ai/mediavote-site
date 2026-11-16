@@ -10,10 +10,10 @@ const faqItems = [
   { q: 'Comment le quorum est-il calculé pendant l’assemblée ?', a: 'ProVote® le calcule automatiquement à mesure que vos membres émargent, en nombre de suffrages ou en pourcentage selon votre règle statutaire. Il est consultable en temps réel depuis votre accès Pilotage, et peut être affiché ou masqué aux participants. Si votre séance comporte une AGO et une AGE, chaque assemblée dispose de son propre quorum.' },
   { q: 'Peut-on gérer les pouvoirs et limiter leur nombre ?', a: 'Oui. Un membre peut donner pouvoir en amont ou en cours de séance. Si vos statuts limitent le nombre de pouvoirs qu’un votant peut recevoir, la règle est paramétrée et appliquée automatiquement : les pouvoirs excédentaires sont refusés. Les configurations titulaire-suppléant sont également prises en charge.' },
   { q: 'Peut-on voter à bulletin secret ?', a: 'Oui, et vous choisissez vote par vote. Une même assemblée peut comporter des résolutions votées de façon nominative et une élection à bulletin secret. Sur un vote anonyme, l’urne d’émargement et l’urne des bulletins sont séparées : savoir qu’une personne a voté ne permet pas de savoir ce qu’elle a voté.' },
-  { q: 'Peut-on faire voter ensemble des membres présents et à distance ?', a: 'Oui, c’est le vote hybride. Les votes exprimés en salle et à distance sont comptés ensemble, avec un quorum consolidé en temps réel et un résultat unique par résolution. Les membres en salle peuvent voter par boîtier ou depuis leur téléphone, selon la configuration retenue.' },
+  { q: 'Peut-on faire voter ensemble des membres présents et à distance ?', a: 'Oui, c’est le vote hybride, avec ProVote®. Que les membres soient en salle ou à distance, le quorum et les votes sont consolidés en temps réel, avec un résultat unique par résolution. Chacun vote depuis son ordinateur, sa tablette ou son smartphone.' },
   { q: 'Nos voix n’ont pas toutes le même poids. Est-ce possible ?', a: 'Oui. Lorsque vos statuts prévoient une pondération — parts sociales, nombre d’adhérents représentés, collèges de poids différents — le poids de chaque votant est intégré au paramétrage et appliqué automatiquement au calcul des résultats.' },
   { q: 'Quels documents obtient-on à l’issue de l’assemblée ?', a: 'Le procès-verbal des résultats en PDF, un export Excel détaillé avec les résultats globaux et le détail des votes nominatifs et anonymes présentés séparément, et le rapport d’émargement complet en PDF et en Excel. Votre accès de consultation reste ouvert après la séance.' },
-  { q: 'Le vote en ligne améliore-t-il la participation ?', a: 'Il lève les obstacles matériels : déplacement, créneau imposé, courrier reçu trop tard. Un scrutin ouvert sur plusieurs jours permet à chacun de voter quand il le peut. La progression dépend ensuite de votre communication auprès de vos membres — nous vous conseillons sur les rappels à programmer, sans promettre un chiffre que nous ne maîtrisons pas.' },
+  { q: 'Le vote en ligne améliore-t-il la participation ?', a: 'Il lève les obstacles matériels : déplacement, créneau imposé, courrier reçu trop tard. Un scrutin ouvert sur plusieurs jours permet à chacun de voter quand il le peut. La progression dépend ensuite de votre communication auprès de vos membres — nous vous conseillons sur les rappels à programmer.' },
   { q: 'Combien de temps faut-il pour préparer une AG ?', a: 'Un mois permet de travailler dans de bonnes conditions : paramétrage, test en situation réelle et ajustements. Nous savons aussi organiser une assemblée dans des délais plus courts. Dites-nous votre échéance, nous vous dirons ce qui est réalisable.' },
   { q: 'Que se passe-t-il si un membre n’arrive pas à voter ?', a: 'Une assistance technique est disponible pendant toute la durée du scrutin, par téléphone et par e-mail. Elle explique comment se connecter, comment voter, et régénère des codes d’accès si le votant a perdu les siens. Un mode accompagné, activable, guide également le votant pas à pas.' }
 ];
@@ -130,8 +130,8 @@ const body = `
   <div class="container">
     ${C.sectionHead({
       eyebrow: 'Nos deux solutions',
-      title: 'ProVote® à distance, boîtiers en salle',
-      lead: 'Pour une AG, les deux solutions conviennent. Le choix dépend de l’endroit où se trouvent vos membres — et vous pouvez les combiner en hybride.'
+      title: 'ProVote® en salle, à distance ou en hybride — boîtiers en salle',
+      lead: 'Pour une AG, les deux solutions conviennent. ProVote® s’utilise aussi bien en présentiel qu’à distance ou en hybride ; les boîtiers de vote, en présentiel.'
     })}
     ${C.scrutinSolutions('ag')}
     <div class="videos" style="margin-top:var(--mv-space-14)">
@@ -409,8 +409,8 @@ si elle est systématique ou sur demande, ni son périmètre géographique. Form
 
 <!-- ============================================ CTA final -->
 ${C.ctaBand({
-  title: 'Voyez votre propre assemblée générale, avant de la tenir',
-  text: 'Dites-nous comment se déroule votre AG : vos résolutions, votre règle de quorum, vos pouvoirs. Nous vous montrons comment elle se déroulerait dans ProVote® — sur votre cas réel, pas sur une démonstration générique.',
+  title: 'Testez votre assemblée générale en amont de votre plénière',
+  text: 'Expliquez-nous vos besoins, vos contraintes, votre contexte et vos statuts : nous vous présenterons ProVote® en adaptant notre démonstration.',
   primary: { label: 'Demander une démonstration AG', url: '/demonstration/' },
   secondary: { label: 'Parler de votre projet d’AG', url: '/contact/' },
   note: '30 à 45 minutes, en visioconférence. Sans engagement.'

@@ -33,14 +33,14 @@ const answer = async (p, vals) => {
   await p.locator('form[data-cfg] button[type=submit]').click(); await p.waitForTimeout(400);
   check('Résultat affiché', await p.locator('[data-cfg-result]').isVisible());
   const kicker = await p.locator('.cfg-res__kicker').textContent();
-  check('AG hybride → ProVote® + boîtiers en alternative', /ProVote®.*ou Boîtiers/.test(kicker), kicker.trim());
+  check('AG hybride → ProVote® seul', /ProVote®/.test(kicker) && !/ou Boîtiers/.test(kicker), kicker.trim());
   check('Focus sur le titre du résultat', await p.evaluate(() => document.activeElement.id === 'cfg-need-title'));
   check('Hash de partage', (await p.evaluate(() => location.hash)) === '#solution=ag.hybride.entreprise.150-299');
   const cta = await p.locator('.cfg-res .solcard__cta').first().textContent();
   check('CTA personnalisé', /pour mon AG/.test(cta), cta.replace(/\s+/g, ' ').trim());
   check('Formulaire de fin visible', await p.locator('[data-cfg-lead]').isVisible());
   const hidden = await p.evaluate(() => [...document.querySelectorAll('[data-cfg-field]')].map(i => i.name + '=' + i.value).join('&'));
-  check('Réponses jointes au formulaire', hidden.includes('vote=ag') && hidden.includes('recommandation=provote+boitier'), hidden);
+  check('Réponses jointes au formulaire', hidden.includes('vote=ag') && hidden.includes('recommandation=provote') && !hidden.includes('provote+boitier'), hidden);
   const demo = await p.locator('.cfg-res a[href^="/demonstration/"]').getAttribute('href');
   check('Lien démo avec réponses', demo.includes('vote=ag') && demo.includes('mode=hybride'), demo);
 
